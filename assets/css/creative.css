@@ -1,0 +1,115 @@
+body,
+html {
+  width: 100%;
+  height: 100%; }
+
+body {
+  font-family: 'Inter';
+  color: #000;
+  background: #000 !important; 
+  overflow: hidden;
+  -webkit-overflow-scrolling:hidden;
+  min-height: 100%;
+  display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+body::-webkit-scrollbar {
+  display: none;
+}
+
+section::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.body {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+
+.button_top_wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.button_one_wrap {
+  background: white;
+  color: black;
+  width: 198px;
+  text-align: center;
+  padding: 15px;
+  margin: 10px;
+  border:1px solid black;
+  text-decoration: none;
+  transition: .3s;
+}
+
+.button_one_wrap div {
+  color: black;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.2em;
+  text-decoration: none;
+}
+
+
+.button_one_wrap:hover {
+  border:1px solid white;
+  background: black;
+  transition: .3s;
+}
+
+.button_one_wrap:hover div {
+  color: white;
+}
+
+.no_effect_btn {
+    background: #4D4D4D;
+    border: 1px solid #4D4D4D;
+}
+
+.no_effect_btn:hover {
+  background: #4D4D4D;
+  color: black;
+  border: 1px solid #4D4D4D;
+  
+  transition: .3s;
+}
+
+.no_effect_btn:hover div{
+  color: black;
+}
+
+@media (max-width: 768px) {
+    .button_one_wrap {
+        width: 100px;
+    }
+
+    .button_one_wrap div {
+        font-size: 12px;
+    }
+}
+
+.header_logout_wrap {
+    display: flex;
+    align-items: center;
+}
+.header_logout_wrap:hover .header_logout {
+    display: none;
+}
+
+.header_logout_wrap:hover .header_logout_hover {
+    display: inline;
+}
+
+.topnav {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+}

@@ -1,0 +1,328 @@
+.loading-screen {
+    display: none;
+}
+
+.loading {
+    overflow: hidden;
+}
+
+.loading .loading-screen {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    background: #221f1f4d;
+}
+
+.loading-screen .loader {
+    border: 10px solid #f3f3f3;
+    border-top: 10px solid #000000;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.admin-manager-container {
+    width: 80%;
+    margin: auto;
+}
+
+.admin-manager-page input[type="checkbox"] {
+    position: static;
+    opacity: 1;
+}
+
+.admin-manager-form-container {
+    margin-top: 30px;
+    display: flex;
+}
+
+.admin-manager-form-col {
+    width: 30%;
+    margin: 0px 1.5%;
+}
+
+.admin-manager-form-input-wrap {
+    display: flex;
+    margin-bottom: 50px;
+}
+
+.admin-manager-form-input-wrap[step="1"] {
+    margin-bottom: 80px;
+}
+
+.admin-manager-form-input-wrap.admin-manager-form-btn {
+    align-items: center;
+    cursor: pointer;
+}
+
+.admin-manager-form-input-numb {
+    background: #EBEBEB;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    border-radius: 50%;
+    text-align: center;
+    color: #000000;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.admin-manager-form-input-wrap-left {
+    flex-shrink: 0;
+    margin-right: 10px;
+}
+
+.admin-manager-form-input-wrap-right {
+    flex-grow: 1;
+    display: flex;
+}
+
+.admin-manager-form-input-wrap-right.trigger-click {
+    cursor: pointer;
+}
+
+.admin-manager-form-input-wrap-right-left {
+    flex-shrink: 0;
+    margin-right: 5px;
+}
+
+.admin-manager-form-input-plus-icon {
+    background: #000000;
+    color: #ffffff;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 30px;
+    font-size: 22px;
+}
+
+.admin-manager-form-input-label {
+    color: #000000;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.admin-manager-form-input-control {
+    border: 0px;
+    background: transparent;
+    border-bottom: 2px solid #B7B7B7;
+    color: #BDBDBD;
+    color: #000000;
+    font-size: 16px;
+    width: 100%;
+    margin-bottom: 5px;
+    max-width: 290px;
+}
+
+select.admin-manager-form-input-control {
+    border-bottom: 0px;
+}
+
+.admin-manager-form-input-desc {
+    color: #BDBDBD;
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.admin-manager-form-input-controls {
+    margin-bottom: 30px;
+}
+
+.admin-manager-form-input-wrap-right-right {
+    padding-top: 5px;
+    flex-grow: 1;
+}
+
+.admin-manager-dashboard-list {
+    margin-top: 200px;
+}
+
+.admin-manager-dashboard-list-title {
+    font-size: 16px;
+    color: #000000;
+}
+
+.admin-manager-dashboard-list-table-tr {
+    display: flex;
+    padding: 5px 0px;
+}
+
+.admin-manager-dashboard-list-table-td:first-of-type {
+    width: 30px;
+    text-align: center;
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+.admin-manager-dashboard-list-table-td:last-of-type {
+    flex-grow: 1;
+}
+
+.admin-manager-dashboard-list-btn {
+    color: #BDBDBD;
+    font-size: 14px;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.admin-manager-dashboard-list-table-tr#dasbboard_list_action_tr {
+    border-bottom: 2px solid #B7B7B7;
+}
+
+.admin-manager-dashboard-list-url {
+    color: #BDBDBD;
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+/* Customize the label (the container) */
+.checkbox-container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    /* margin-bottom: 12px; */
+    cursor: pointer;
+    /* font-size: 22px; */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    display: inline-block;
+}
+
+/* Hide the browser's default checkbox */
+.checkbox-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Create a custom checkbox */
+.checkbox-container .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    /* background-color: #eee; */
+    border: 1px solid #000000;
+}
+
+/* On mouse-over, add a grey background color */
+.checkbox-container:hover input ~ .checkmark {
+    /* background-color: #ccc; */
+}
+
+/* When the checkbox is checked, add a blue background */
+.checkbox-container input:checked ~ .checkmark {
+    /* background-color: #2196F3; */
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkbox-container .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.checkbox-container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.checkbox-container .checkmark:after {
+    left: 6px;
+    top: 3px;
+    width: 6px;
+    height: 11px;
+    border: solid #000000;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+#modal_select .table tr td:first-of-type {
+    width: 40px;
+}
+
+.reports-header {
+    display: flex;
+    align-items: center;
+    margin-top: 80px;
+    margin-left: -5px;
+    margin-right: -5px;
+}
+
+.report-header-wrap {
+    margin: 0px 5px;
+    width: calc(25% - 10px);
+}
+
+.report-header-updates-count {
+    font-size: 14px;
+    font-weight: bold;
+    color: #000000;
+    margin-bottom: 5px;
+}
+
+.report-header-updates-count.disable {
+    color: #B4B4B4;
+}
+
+.report-header-btn-switch {
+    text-transform: uppercase;
+    padding: 10px;
+    border: 1px solid #909090;
+    color: #909090;
+    background: transparent;
+    cursor: pointer;
+}
+
+.report-header-btn-switch.active {
+    color: #ffffff;
+    background: #000000;
+}
+
+.reports-container {
+    margin-top: 10px;
+    margin-bottom: 80px;
+}
+
+.show-popup .report-list-action-popup {
+    display: none;
+}
+
+.report-list-info-input-wrap:hover .report-list-info-input {
+    border: 1px solid transparent;
+}
+
+.report-list-info-input-wrap:hover .report-list-info-edit-btn {
+    visibility: hidden;
+}
+
+.report-list-action-btn {
+    display: none;
+}
+
+.report-add-area {
+    display: none;
+}

@@ -1,0 +1,227 @@
+2021/07/15 06:00:29am      Cron Job Check Start >>>>>>>>>>
+2021/07/15 06:00:29am      ---Start Check:25
+2021/07/15 06:00:34am      ---Update Status:new
+2021/07/15 06:00:34am      ---Complete Check:25
+2021/07/15 06:00:34am      ---Start Check:26
+2021/07/15 06:00:38am      ---Update Status:new
+2021/07/15 06:00:38am      ---Complete Check:26
+2021/07/15 06:00:38am      ---Start Check:36
+2021/07/15 06:00:44am      ---Update Status:new
+2021/07/15 06:00:44am      ---Complete Check:36
+2021/07/15 06:00:44am      ---Start Check:38
+2021/07/15 06:00:48am      ---Update Status:new
+2021/07/15 06:00:48am      ---Complete Check:38
+2021/07/15 06:00:48am      ---Start Check:49
+2021/07/15 06:00:53am      ---Update Status:new
+2021/07/15 06:00:53am      ---Complete Check:49
+2021/07/15 06:00:53am      ---Start Check:52
+2021/07/15 06:00:56am      ---Update Status:new
+2021/07/15 06:00:56am      ---Complete Check:52
+2021/07/15 06:00:56am      ---Start Check:60
+2021/07/15 06:01:00am      ---Update Status:new
+2021/07/15 06:01:00am      ---Complete Check:60
+2021/07/15 06:01:00am      ---Start Check:61
+2021/07/15 06:01:04am      ---Update Status:new
+2021/07/15 06:01:04am      ---Complete Check:61
+2021/07/15 06:01:04am      ---Start Check:64
+2021/07/15 06:01:09am      ---Update Status:recent
+2021/07/15 06:01:09am      ---Complete Check:64
+2021/07/15 06:01:09am      ---Start Check:66
+2021/07/15 06:01:13am      ---Update Status:recent
+2021/07/15 06:01:13am      ---Complete Check:66
+2021/07/15 06:01:13am      ---Start Check:70
+2021/07/15 06:01:17am      ---Update Status:new
+2021/07/15 06:01:17am      ---Complete Check:70
+2021/07/15 06:01:17am      ---Start Check:71
+2021/07/15 06:01:21am      ---Update Status:recent
+2021/07/15 06:01:21am      ---Complete Check:71
+2021/07/15 06:01:21am      ---Start Check:72
+2021/07/15 06:01:24am      ---Update Status:recent
+2021/07/15 06:01:24am      ---Complete Check:72
+2021/07/15 06:01:24am      ---Start Check:73
+2021/07/15 06:01:29am      ---Update Status:recent
+2021/07/15 06:01:29am      ---Complete Check:73
+2021/07/15 06:01:29am      Cron Job Check End <<<<<<<<<<
+2021/07/16 04:57:19am      Cron Job Check Start >>>>>>>>>>
+2021/07/16 04:57:19am      ---Start Check:25
+2021/07/16 04:57:25am      ---Update Status:new
+2021/07/16 04:57:25am      ---Complete Check:25
+2021/07/16 04:57:25am      ---Start Check:26
+2021/07/16 04:57:30am      ---Update Status:new
+2021/07/16 04:57:30am      ---Complete Check:26
+2021/07/16 04:57:30am      ---Start Check:36
+2021/07/16 04:57:36am      ---Update Status:new
+2021/07/16 04:57:36am      ---Complete Check:36
+2021/07/16 04:57:36am      ---Start Check:38
+2021/07/16 04:57:41am      ---Update Status:new
+2021/07/16 04:57:41am      ---Complete Check:38
+2021/07/16 04:57:41am      ---Start Check:49
+2021/07/16 04:57:47am      ---Update Status:new
+2021/07/16 04:57:47am      ---Complete Check:49
+2021/07/16 04:57:47am      ---Start Check:52
+2021/07/16 04:57:51am      ---Update Status:new
+2021/07/16 04:57:51am      ---Complete Check:52
+2021/07/16 04:57:51am      ---Start Check:60
+2021/07/16 04:57:56am      ---Update Status:new
+2021/07/16 04:57:56am      ---Complete Check:60
+2021/07/16 04:57:56am      ---Start Check:61
+2021/07/16 04:58:01am      ---Update Status:new
+2021/07/16 04:58:01am      ---Complete Check:61
+2021/07/16 04:58:01am      ---Start Check:64
+2021/07/16 04:58:06am      ---Update Status:new
+2021/07/16 04:58:06am      ---Complete Check:64
+2021/07/16 04:58:06am      ---Start Check:66
+2021/07/16 04:58:11am      ---Update Status:new
+2021/07/16 04:58:11am      ---Complete Check:66
+2021/07/16 04:58:11am      ---Start Check:70
+2021/07/16 04:58:17am      ---Update Status:new
+2021/07/16 04:58:17am      ---Complete Check:70
+2021/07/16 04:58:17am      ---Start Check:71
+2021/07/16 04:58:23am      ---Update Status:new
+2021/07/16 04:58:23am      ---Complete Check:71
+2021/07/16 04:58:23am      ---Start Check:72
+2021/07/16 04:58:28am      ---Update Status:new
+2021/07/16 04:58:28am      ---Complete Check:72
+2021/07/16 04:58:28am      ---Start Check:73
+2021/07/16 04:58:34am      ---Update Status:new
+2021/07/16 04:58:34am      ---Complete Check:73
+2021/07/16 04:58:34am      ---Start Check:74
+2021/07/16 04:58:40am      ---Update Status:new
+2021/07/16 04:58:40am      ---Complete Check:74
+2021/07/16 04:58:40am      Cron Job Check End <<<<<<<<<<
+2021/07/21 02:39:38pm      Cron Job Check Start >>>>>>>>>>
+2021/07/21 02:39:38pm      ---Start Check:25
+2021/07/21 02:39:45pm      ---Update Status:new
+2021/07/21 02:39:45pm      ---Complete Check:25
+2021/07/21 02:39:45pm      ---Start Check:26
+2021/07/21 02:39:52pm      ---Update Status:new
+2021/07/21 02:39:52pm      ---Complete Check:26
+2021/07/21 02:39:52pm      ---Start Check:36
+2021/07/21 02:39:59pm      ---Update Status:new
+2021/07/21 02:39:59pm      ---Complete Check:36
+2021/07/21 02:39:59pm      ---Start Check:38
+2021/07/21 02:40:06pm      ---Update Status:new
+2021/07/21 02:40:06pm      ---Complete Check:38
+2021/07/21 02:40:06pm      ---Start Check:49
+2021/07/21 02:40:14pm      ---Update Status:new
+2021/07/21 02:40:14pm      ---Complete Check:49
+2021/07/21 02:40:14pm      ---Start Check:52
+2021/07/21 02:40:18pm      ---Update Status:new
+2021/07/21 02:40:18pm      ---Complete Check:52
+2021/07/21 02:40:18pm      ---Start Check:60
+2021/07/21 02:40:25pm      ---Update Status:new
+2021/07/21 02:40:25pm      ---Complete Check:60
+2021/07/21 02:40:25pm      ---Start Check:61
+2021/07/21 02:40:31pm      ---Update Status:new
+2021/07/21 02:40:31pm      ---Complete Check:61
+2021/07/21 02:40:31pm      ---Start Check:64
+2021/07/21 02:40:51pm      ---Update Status:new
+2021/07/21 02:40:51pm      ---Complete Check:64
+2021/07/21 02:40:51pm      ---Start Check:66
+2021/07/21 02:41:05pm      ---Update Status:new
+2021/07/21 02:41:05pm      ---Complete Check:66
+2021/07/21 02:41:05pm      ---Start Check:70
+2021/07/21 02:41:15pm      ---Update Status:new
+2021/07/21 02:41:15pm      ---Complete Check:70
+2021/07/21 02:41:15pm      ---Start Check:71
+2021/07/21 02:41:30pm      ---Update Status:new
+2021/07/21 02:41:30pm      ---Complete Check:71
+2021/07/21 02:41:30pm      ---Start Check:72
+2021/07/21 02:41:40pm      ---Update Status:new
+2021/07/21 02:41:40pm      ---Complete Check:72
+2021/07/21 02:41:40pm      ---Start Check:73
+2021/07/21 02:41:54pm      ---Update Status:new
+2021/07/21 02:41:54pm      ---Complete Check:73
+2021/07/21 02:41:54pm      ---Start Check:74
+2021/07/21 02:42:09pm      ---Update Status:new
+2021/07/21 02:42:09pm      ---Complete Check:74
+2021/07/21 02:42:09pm      Cron Job Check End <<<<<<<<<<
+2021/07/24 04:17:09am      Cron Job Check Start >>>>>>>>>>
+2021/07/24 04:17:09am      ---Start Check:25
+2021/07/24 04:17:14am      ---Update Status:recent
+2021/07/24 04:17:14am      ---Complete Check:25
+2021/07/24 04:17:14am      ---Start Check:26
+2021/07/24 04:17:18am      ---Update Status:new
+2021/07/24 04:17:18am      ---Complete Check:26
+2021/07/24 04:17:18am      ---Start Check:36
+2021/07/24 04:17:23am      ---Update Status:new
+2021/07/24 04:17:23am      ---Complete Check:36
+2021/07/24 04:17:23am      ---Start Check:38
+2021/07/24 04:17:28am      ---Update Status:new
+2021/07/24 04:17:28am      ---Complete Check:38
+2021/07/24 04:17:28am      ---Start Check:49
+2021/07/24 04:17:33am      ---Update Status:new
+2021/07/24 04:17:33am      ---Complete Check:49
+2021/07/24 04:17:33am      ---Start Check:52
+2021/07/24 04:17:37am      ---Update Status:new
+2021/07/24 04:17:37am      ---Complete Check:52
+2021/07/24 04:17:37am      ---Start Check:60
+2021/07/24 04:17:42am      ---Update Status:recent
+2021/07/24 04:17:42am      ---Complete Check:60
+2021/07/24 04:17:42am      ---Start Check:61
+2021/07/24 04:17:46am      ---Update Status:new
+2021/07/24 04:17:46am      ---Complete Check:61
+2021/07/24 04:17:46am      ---Start Check:64
+2021/07/24 04:17:51am      ---Update Status:new
+2021/07/24 04:17:51am      ---Complete Check:64
+2021/07/24 04:17:51am      ---Start Check:66
+2021/07/24 04:17:59am      ---Update Status:recent
+2021/07/24 04:17:59am      ---Complete Check:66
+2021/07/24 04:17:59am      ---Start Check:70
+2021/07/24 04:18:04am      ---Update Status:recent
+2021/07/24 04:18:04am      ---Complete Check:70
+2021/07/24 04:18:04am      ---Start Check:71
+2021/07/24 04:18:08am      ---Update Status:recent
+2021/07/24 04:18:08am      ---Complete Check:71
+2021/07/24 04:18:08am      ---Start Check:72
+2021/07/24 04:18:13am      ---Update Status:recent
+2021/07/24 04:18:13am      ---Complete Check:72
+2021/07/24 04:18:13am      ---Start Check:73
+2021/07/24 04:18:18am      ---Update Status:new
+2021/07/24 04:18:18am      ---Complete Check:73
+2021/07/24 04:18:18am      ---Start Check:74
+2021/07/24 04:18:23am      ---Update Status:recent
+2021/07/24 04:18:23am      ---Complete Check:74
+2021/07/24 04:18:23am      Cron Job Check End <<<<<<<<<<
+2021/08/09 04:24:52pm      Cron Job Start >>>>>>>>>>
+2021/08/09 04:24:52pm      ---Start the report:27
+2021/08/09 04:29:27pm      Cron Job Check Start >>>>>>>>>>
+2021/08/09 04:29:38pm      ---Update Status:new
+2021/08/09 04:29:38pm      ---Complete Check:27
+2021/08/09 04:29:38pm      Cron Job Check End <<<<<<<<<<
+2021/08/09 04:36:43pm      Cron Job Start >>>>>>>>>>
+2021/08/09 04:36:43pm      ---Start the report:27
+2021/08/09 04:36:53pm      SMTP connect() failed. https://github.com/PHPMailer/PHPMailer/wiki/Troubleshooting
+2021/08/09 04:36:53pm      ---Sent Email to kingdeveloper@yahoo.com
+2021/08/09 04:36:53pm      ---Complete the report:27
+2021/08/09 04:36:53pm      Cron Job End <<<<<<<<<<
+2021/08/09 04:36:59pm      Cron Job Start >>>>>>>>>>
+2021/08/09 04:36:59pm      ---Start the report:27
+2021/08/09 04:37:09pm      SMTP connect() failed. https://github.com/PHPMailer/PHPMailer/wiki/Troubleshooting
+2021/08/09 04:37:09pm      ---Sent Email to kingdeveloper@yahoo.com
+2021/08/09 04:37:09pm      ---Complete the report:27
+2021/08/09 04:37:09pm      Cron Job End <<<<<<<<<<
+2021/08/09 04:37:13pm      Cron Job Check Start >>>>>>>>>>
+2021/08/09 04:37:22pm      ---Update Status:new
+2021/08/09 04:37:22pm      ---Complete Check:27
+2021/08/09 04:37:22pm      Cron Job Check End <<<<<<<<<<
+2021/08/09 04:37:33pm      Cron Job Start >>>>>>>>>>
+2021/08/09 04:37:33pm      ---Start the report:27
+2021/08/09 04:37:43pm      SMTP connect() failed. https://github.com/PHPMailer/PHPMailer/wiki/Troubleshooting
+2021/08/09 04:37:43pm      ---Sent Email to kingdeveloper@yahoo.com
+2021/08/09 04:37:43pm      ---Complete the report:27
+2021/08/09 04:37:43pm      Cron Job End <<<<<<<<<<
+2021/08/09 04:38:04pm      Cron Job Start >>>>>>>>>>
+2021/08/09 04:38:04pm      ---Start the report:27
+2021/08/09 04:38:14pm      SMTP connect() failed. https://github.com/PHPMailer/PHPMailer/wiki/Troubleshooting
+2021/08/09 04:38:14pm      ---Sent Email to kingdeveloper@yahoo.com
+2021/08/09 04:38:14pm      ---Complete the report:27
+2021/08/09 04:38:14pm      Cron Job End <<<<<<<<<<
+2021/08/09 04:38:17pm      Cron Job Start >>>>>>>>>>
+2021/08/09 04:38:17pm      ---Start the report:27
+2021/08/09 04:38:31pm      SMTP connect() failed. https://github.com/PHPMailer/PHPMailer/wiki/Troubleshooting
+2021/08/09 04:38:31pm      ---Sent Email to kingdeveloper@yahoo.com
+2021/08/09 04:38:31pm      ---Complete the report:27
+2021/08/09 04:38:31pm      Cron Job End <<<<<<<<<<
+2021/08/09 04:38:40pm      Cron Job Start >>>>>>>>>>
+2021/08/09 04:38:40pm      ---Start the report:27
