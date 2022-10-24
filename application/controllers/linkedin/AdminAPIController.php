@@ -21,9 +21,11 @@ class AdminAPIController extends CI_Controller
         echo json_encode($groups);
     }
 
-    public function GetGroupProfiles($GroupId)
+    public function GetGroupProfiles()
     {
-        $groups = get_url_resp($this->config->item("talent_lib_server").'PublicApi/GetGroupProfiles.ashx?GroupId='.$GroupId);
+        $groups = post_url_resp($this->config->item("talent_lib_server").'PublicApi/GetGroupProfiles.ashx', array(
+            'profile_ids' => $_POST['profile_ids']
+        ));
         
         echo json_encode($groups);
     }

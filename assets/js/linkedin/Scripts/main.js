@@ -90,13 +90,17 @@ app.controller('MainController', ['$scope', 'Upload', '$sce', '$filter', functio
     };
 
     $scope.loadGroupProfiles = function () {
-        $scope.loadingText = "Loading group profiles...";
+        $scope.loadingText = "Loading profiles...";
         $scope.loading = true;
         $.ajax({
-            type: "GET",
-            url: base_url + "PublicApi/GetGroupProfiles.ashx/" + $scope.selectedGroup.Id,
-            contentType: 'application/json; charset=utf-8',
+            type: "POST",
+            // url: base_url + "PublicApi/GetGroupProfiles.ashx/" + $scope.selectedGroup.Id,
+            url: base_url + "PublicApi/GetGroupProfiles.ashx",
+            // contentType: 'application/json; charset=utf-8',
             dataType: 'json',
+            data: {
+                'profile_ids': linkedin_reports_ids
+            },
             error: function (error) {
                 $scope.loading = false;
                 $scope.notify("Failed to load group profiles.");

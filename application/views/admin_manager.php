@@ -198,138 +198,59 @@
                     </div>
                 </div>
                 <div class="modal-body">
-                <?php
-                    if(isset($reports['linkedin'])) {
-                        ?>
-                        <div class="modal-table-content" id="linkedin">
-                            <table id="linkedin_list" class="table table-bordered table-striped table-hover dataTable">
-                                <thead>
-                                    <tr>
-                                        <td></td>
-                                        <td>Name</td>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                    foreach($reports['linkedin'] as $report) {
-                                        ?>
-                                        <tr>
-                                            <td>
-                                                <label class="checkbox-container">
-                                                    <input type="checkbox" class="checkbox-linkedin" data-type="linkedin" data-id="<?php echo $report['Id']?>" id="linkedin_checkbox_<?php echo $report['Id']?>">
-                                                    <span class="checkmark"></span>
-                                                </label>
-                                            </td>
-                                            <td><?php echo $report['Name']?></td>
-                                        </tr>
-                                        <?php
-                                    }
-                                    ?>
-                                </tbody>
-                            </table>
-                        </div>
-                        <?php
-                    }
-                    ?>
-                    <?php
-                    if(isset($reports['biorxiv'])) {
-                        ?>
-                        <div class="modal-table-content" id="biorxiv">
-                            <table id="biorxiv_list" class="table table-bordered table-striped table-hover dataTable">
-                                <thead>
-                                    <tr>
-                                        <td></td>
-                                        <td>Title</td>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                    foreach($reports['biorxiv'] as $report) {
-                                        ?>
-                                        <tr>
-                                            <td>
-                                                <label class="checkbox-container">
-                                                    <input type="checkbox" class="checkbox-biorxiv" data-type="biorxiv" data-id="<?php echo $report['id']?>" id="biorxiv_checkbox_<?php echo $report['id']?>">
-                                                    <span class="checkmark"></span>
-                                                </label>
-                                            </td>
-                                            <td><?php echo $report['title']?></td>
-                                        </tr>
-                                        <?php
-                                    }
-                                    ?>
-                                </tbody>
-                            </table>
-                        </div>
-                        <?php
-                    }
-                    ?>
-                    <?php
-                    if(isset($reports['pubmed'])) {
-                        ?>
-                        <div class="modal-table-content" id="pubmed">
-                            <table id="pubmed_list" class="table table-bordered table-striped table-hover dataTable">
-                                <thead>
-                                    <tr>
-                                        <td></td>
-                                        <td>Title</td>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                    foreach($reports['pubmed'] as $report) {
-                                        ?>
-                                        <tr>
-                                            <td>
-                                                <label class="checkbox-container">
-                                                    <input type="checkbox" class="checkbox-pubmed" data-type="pubmed" data-id="<?php echo $report['id']?>" id="pubmed_checkbox_<?php echo $report['id']?>">
-                                                    <span class="checkmark"></span>
-                                                </label>
-                                            </td>
-                                            <td><?php echo $report['title']?></td>
-                                        </tr>
-                                        <?php
-                                    }
-                                    ?>
-                                </tbody>
-                            </table>
-                        </div>
-                        <?php
-                    }
-                    ?>
-                    <?php
-                    if(isset($reports['clinical'])) {
-                        ?>
-                        <div class="modal-table-content" id="clinical">
-                            <table id="clinical_list" class="table table-bordered table-striped table-hover dataTable">
-                                <thead>
-                                    <tr>
-                                        <td></td>
-                                        <td>Title</td>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                    foreach($reports['clinical'] as $report) {
-                                        ?>
-                                        <tr>
-                                            <td>
-                                                <label class="checkbox-container">
-                                                    <input type="checkbox" class="checkbox-clinical" data-type="clinical" data-id="<?php echo $report['id']?>" id="clinical_checkbox_<?php echo $report['id']?>">
-                                                    <span class="checkmark"></span>
-                                                </label>
-                                            </td>
-                                            <td><?php echo $report['title']?></td>
-                                        </tr>
-                                        <?php
-                                    }
-                                    ?>
-                                </tbody>
-                            </table>
-                        </div>
-                        <?php
-                    }
-                    ?>
+                    <div class="modal-table-content" id="linkedin">
+                        <table id="linkedin_list" class="table table-bordered table-striped table-hover dataTable">
+                            <thead>
+                                <tr>
+                                    <td></td>
+                                    <td>Name</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-table-content" id="biorxiv">
+                        <table id="biorxiv_list" class="table table-bordered table-striped table-hover dataTable">
+                            <thead>
+                                <tr>
+                                    <td></td>
+                                    <td>Title</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-table-content" id="pubmed">
+                        <table id="pubmed_list" class="table table-bordered table-striped table-hover dataTable">
+                            <thead>
+                                <tr>
+                                    <td></td>
+                                    <td>Title</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-table-content" id="clinical">
+                        <table id="clinical_list" class="table table-bordered table-striped table-hover dataTable">
+                            <thead>
+                                <tr>
+                                    <td></td>
+                                    <td>Title</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
 

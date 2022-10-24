@@ -79,11 +79,17 @@
         <div class="reports-container">
             <?php
             if(isset($reports) && isset($reports['linkedin'])) {
-                $data = [];
+                $report_ids = [];
+                foreach($reports['linkedin'] as $report_id => $report_id_val) {
+                    $report_ids[] = $report_id;
+                }
                 ?>
                 <div class="reports-wrap" id="reports_linkedin" style="">
+                    <script>
+                        const linkedin_reports_ids = <?php echo json_encode($report_ids)?>;
+                    </script>
                     <?php
-                    $this->load->view('linkedin/dashboard', $data);
+                    $this->load->view('linkedin/dashboard');
                     ?>
                 </div>                
                 <?php

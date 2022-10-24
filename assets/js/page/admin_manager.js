@@ -8,50 +8,62 @@ var user_count = 3;
 var reports = {};
 var reports_tmp = {};
 (function($) {
-    if($('#linkedin_list').length > 0) {
-        linkedin_list = $('#linkedin_list').DataTable({
-            responsive: true,
-            "columnDefs": [
-                { "width": 50, "targets": 1 }
-            ],
-            fixedColumns: true,
-            "ordering": false,
-            // ajax: base_url + "/backend/linkedin/profiles"
-        });
+    function load_reports() {
+        $('body').addClass('loading');
+        $.ajax({
+            url: base_url + '/backend/reports/load',
+            type: 'get',
+            dataType: 'json',
+            success: function(resp) {
+                $('#linkedin_list tbody').html(resp.linkedin);
+                $('#biorxiv_list tbody').html(resp.biorxiv);
+                $('#pubmed_list tbody').html(resp.pubmed);
+                $('#clinical_list tbody').html(resp.clinical);
+
+                linkedin_list = $('#linkedin_list').DataTable({
+                    responsive: true,
+                    "columnDefs": [
+                        { "width": 50, "targets": 1 }
+                    ],
+                    fixedColumns: true,
+                    "ordering": false,
+                    // ajax: base_url + "/backend/linkedin/profiles"
+                });
+
+                biorxiv_list = $('#biorxiv_list').DataTable({
+                    responsive: true,
+                    "columnDefs": [
+                        { "width": 50, "targets": 1 }
+                    ],
+                    fixedColumns: true,
+                    "ordering": false,
+                });
+
+                pubmed_list = $('#pubmed_list').DataTable({
+                    responsive: true,
+                    "columnDefs": [
+                        { "width": 50, "targets": 1 }
+                    ],
+                    fixedColumns: true,
+                    "ordering": false,
+                });
+
+                clinical_list = $('#clinical_list').DataTable({
+                    responsive: true,
+                    "columnDefs": [
+                        { "width": 50, "targets": 1 }
+                    ],
+                    fixedColumns: true,
+                    "ordering": false,
+                });
+
+                $('body').removeClass('loading');
+            }
+        })
+
     }
 
-    if($('#biorxiv_list').length > 0) {
-        biorxiv_list = $('#biorxiv_list').DataTable({
-            responsive: true,
-            "columnDefs": [
-                { "width": 50, "targets": 1 }
-            ],
-            fixedColumns: true,
-            "ordering": false,
-        });
-    }
-
-    if($('#pubmed_list').length > 0) {
-        pubmed_list = $('#pubmed_list').DataTable({
-            responsive: true,
-            "columnDefs": [
-                { "width": 50, "targets": 1 }
-            ],
-            fixedColumns: true,
-            "ordering": false,
-        });
-    }
-
-    if($('#clinical_list').length > 0) {
-        clinical_list = $('#clinical_list').DataTable({
-            responsive: true,
-            "columnDefs": [
-                { "width": 50, "targets": 1 }
-            ],
-            fixedColumns: true,
-            "ordering": false,
-        });
-    }
+    load_reports();
 
 
     $(document).on('click', '.trigger-click', function() {

@@ -13,6 +13,107 @@ class BackendController extends CI_Controller
         $this->load->library('mailer');
     }
 
+    public function reports_load()
+    {
+        $reports = array(
+            'linkedin' => '',
+            'biorxiv' => '',
+            'pubmed' => '',
+            'clinical' => '',
+        );
+
+        $linkedin = [];
+        $linkedin_profiles_resp = get_url_resp($this->config->item("talent_lib_server").'PublicApi/GetAllProfiles.ashx');
+
+        if($linkedin_profiles_resp && isset($linkedin_profiles_resp['success']) && $linkedin_profiles_resp['success']) {
+            $linkedin = $linkedin_profiles_resp['profiles'];
+        }
+        
+        ob_start();
+        foreach($linkedin as $report) {
+            ?>
+            <tr>
+                <td>
+                    <label class="checkbox-container">
+                        <input type="checkbox" class="checkbox-linkedin" data-type="linkedin" data-id="<?php echo $report['Id']?>" id="linkedin_checkbox_<?php echo $report['Id']?>">
+                        <span class="checkmark"></span>
+                    </label>
+                </td>
+                <td><?php echo $report['Name']?></td>
+            </tr>
+            <?php
+        }
+
+        $reports['linkedin'] = ob_get_contents();
+        ob_end_clean();
+
+        $local_db = $this->load->database('biorxiv', TRUE); 
+        $result = $local_db->query('SELECT * FROM reports')->result_array();
+        $biorxiv = $result;
+        ob_start();
+        foreach($biorxiv as $report) {
+            ?>
+            <tr>
+                <td>
+                    <label class="checkbox-container">
+                        <input type="checkbox" class="checkbox-biorxiv" data-type="biorxiv" data-id="<?php echo $report['id']?>" id="biorxiv_checkbox_<?php echo $report['id']?>">
+                        <span class="checkmark"></span>
+                    </label>
+                </td>
+                <td><?php echo $report['title']?></td>
+            </tr>
+            <?php
+        }
+        $local_db->close();
+        $reports['biorxiv'] = ob_get_contents();
+        ob_end_clean();
+
+        $local_db = $this->load->database('pubmed', TRUE); 
+        $result = $local_db->query('SELECT * FROM reports')->result_array();
+        $pubmed = $result;
+        ob_start();
+        foreach($pubmed as $report) {
+            ?>
+            <tr>
+                <td>
+                    <label class="checkbox-container">
+                        <input type="checkbox" class="checkbox-pubmed" data-type="pubmed" data-id="<?php echo $report['id']?>" id="pubmed_checkbox_<?php echo $report['id']?>">
+                        <span class="checkmark"></span>
+                    </label>
+                </td>
+                <td><?php echo $report['title']?></td>
+            </tr>
+            <?php
+        }
+        $local_db->close();
+        $reports['pubmed'] = ob_get_contents();
+        ob_end_clean();
+
+
+        $local_db = $this->load->database('clinical', TRUE); 
+        $result = $local_db->query('SELECT * FROM reports')->result_array();
+        $clinical = $result;
+        ob_start();
+        foreach($clinical as $report) {
+            ?>
+            <tr>
+                <td>
+                    <label class="checkbox-container">
+                        <input type="checkbox" class="checkbox-clinical" data-type="clinical" data-id="<?php echo $report['id']?>" id="clinical_checkbox_<?php echo $report['id']?>">
+                        <span class="checkmark"></span>
+                    </label>
+                </td>
+                <td><?php echo $report['title']?></td>
+            </tr>
+            <?php
+        }
+        $local_db->close();
+        $reports['clinical'] = ob_get_contents();
+        ob_end_clean();
+
+        echo json_encode($reports);
+    }
+
     public function dashboard_publish()
     {
         $dashboard_id = $this->Dashboards->add(array(

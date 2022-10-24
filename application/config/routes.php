@@ -53,6 +53,7 @@ $route['default_controller'] = 'PageController';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
+$route['backend/reports/load'] = 'BackendController/reports_load';
 
 $route['backend/dashboard/publish'] = 'BackendController/dashboard_publish';
 $route['backend/dashboard/delete'] = 'BackendController/dashboard_delete';
@@ -60,7 +61,7 @@ $route['backend/dashboard/edit'] = 'BackendController/dashboard_edit';
 $route['backend/dashboard/update'] = 'BackendController/dashboard_update';
 
 $route['PublicApi/GetGroups.ashx'] = 'linkedin/AdminAPIController/GetGroups';
-$route['PublicApi/GetGroupProfiles.ashx/(:any)'] = 'linkedin/AdminAPIController/GetGroupProfiles/$1';
+$route['PublicApi/GetGroupProfiles.ashx'] = 'linkedin/AdminAPIController/GetGroupProfiles';
 $route['PublicApi/GetProfileDiff.ashx/(:any)'] = 'linkedin/AdminAPIController/GetProfileDiff/$1';
 $route['PublicApi/GetCompanyProfiles.ashx/(:any)/(:any)'] = 'linkedin/AdminAPIController/GetCompanyProfiles/$1/$2';
 
