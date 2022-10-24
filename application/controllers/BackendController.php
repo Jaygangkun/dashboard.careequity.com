@@ -26,7 +26,7 @@ class BackendController extends CI_Controller
         $linkedin_profiles_resp = get_url_resp($this->config->item("talent_lib_server").'PublicApi/GetAllProfiles.ashx');
 
         if($linkedin_profiles_resp && isset($linkedin_profiles_resp['success']) && $linkedin_profiles_resp['success']) {
-            $linkedin = $linkedin_profiles_resp['profiles'];
+            $linkedin = json_decode($linkedin_profiles_resp['profiles'], true);
         }
         
         ob_start();
