@@ -1,3 +1,4 @@
+var linkedin_list = null;
 var biorxiv_list = null;
 var pubmed_list = null;
 var clinical_list = null;
@@ -5,7 +6,20 @@ var clinical_list = null;
 var user_count = 3;
 
 var reports = {};
+var reports_tmp = {};
 (function($) {
+    if($('#linkedin_list').length > 0) {
+        linkedin_list = $('#linkedin_list').DataTable({
+            responsive: true,
+            "columnDefs": [
+                { "width": 50, "targets": 1 }
+            ],
+            fixedColumns: true,
+            "ordering": false,
+            // ajax: base_url + "/backend/linkedin/profiles"
+        });
+    }
+
     if($('#biorxiv_list').length > 0) {
         biorxiv_list = $('#biorxiv_list').DataTable({
             responsive: true,
@@ -46,6 +60,7 @@ var reports = {};
         $('.modal-table-content').hide();
         if(type == 'linkedin') {
             $("#modal_select .modal-title").html('Select Linkedin Accounts');
+            $('#linkedin.modal-table-content').show();
         }
         else if(type == 'biorxiv') {
             $("#modal_select .modal-title").html('Select Biorxiv reports');
@@ -70,21 +85,51 @@ var reports = {};
         var data_type = $(this).attr('data-type');
         var data_id = $(this).attr('data-id');
 
-        if(!reports.hasOwnProperty(data_type)) {
-            reports[data_type] = {};
+        if(!reports_tmp.hasOwnProperty(data_type)) {
+            reports_tmp[data_type] = {};
         }
 
         if($(this).is(':checked')) {
-            reports[data_type][data_id] = $(this).is(':checked');
+            reports_tmp[data_type][data_id] = $(this).is(':checked');
         }
-        else if(reports[data_type].hasOwnProperty(data_id)){
-            delete reports[data_type][data_id];
+        else if(reports_tmp[data_type].hasOwnProperty(data_id)){
+            delete reports_tmp[data_type][data_id];
         }
         
     })
 
-    $(document).on('click', '#dasbboard_list_action_tr [type="checkbox"]', function() {
+    $(document).on('click', '#btn_modal_select_save', function() {
+        reports = JSON.parse(JSON.stringify(reports_tmp));
 
+        $('.admin-manager-form-input-result').text("");
+        Object.keys(reports).forEach(report_type => {
+            if(Object.keys(reports[report_type]).length > 0) {
+                $('.admin-manager-form-input-result[data-type="' + report_type + '"]').text(Object.keys(reports[report_type]).length + " selected");
+            }  
+        })
+
+        $("#modal_select").modal('hide');
+    })
+
+
+    $("#modal_select").on("hidden.bs.modal", function () {
+        reports_tmp = {};
+        $('#modal_select [type="checkbox"]').prop('checked', false);
+    });
+
+    $("#modal_select").on("shown.bs.modal", function () {
+        reports_tmp = JSON.parse(JSON.stringify(reports));
+
+        $('#modal_select [type="checkbox"]').prop('checked', false);
+
+        Object.keys(reports).forEach(report_type => {
+            Object.keys(reports[report_type]).forEach(report_id => {
+                $('.checkbox-' + report_type + '[data-id="' + report_id + '"]').prop('checked', true);
+            })            
+        })
+    });
+
+    $(document).on('click', '#dasbboard_list_action_tr [type="checkbox"]', function() {
         $('.dashboard-checkbox').prop('checked', $(this).is(':checked'));
     })
 
@@ -95,6 +140,8 @@ var reports = {};
             $('[name="username' + index + '"]').val('');
             $('[name="password' + index + '"]').val('');
         }
+
+        $('.admin-manager-form-input-result').text("");
 
         $('#modal_select [type="checkbox"]').prop('checked', false);
     }
@@ -141,6 +188,7 @@ var reports = {};
                 data: publish_data,
                 dataType: 'json',
                 success: function(resp) {
+                    alert('Updated Successfully!');
                     $('#dashboard_list_table').html(resp.dashboard_trs);
     
                     clearAdminManagerForm();
@@ -155,8 +203,10 @@ var reports = {};
                 data: publish_data,
                 dataType: 'json',
                 success: function(resp) {
+                    alert('Published Successfully!');
                     $('#dashboard_list_table').append(resp.dashboard_tr);
     
+                    clearAdminManagerForm();
                     $('body').removeClass('loading');
                 }
             })
@@ -191,18 +241,19 @@ var reports = {};
                 if(resp.dashboard) {
                     $('[name="dashboard_name"]').val(resp.dashboard.name);
 
+                    $('.admin-manager-form-input-result').text("");
+
                     var resp_reports = JSON.parse(resp.dashboard.reports);
+                    reports = JSON.parse(JSON.stringify(resp_reports));
                     Object.keys(resp_reports).map(report_type => {
-                        if(!reports.hasOwnProperty(report_type)) {
-                            reports[report_type] = {};
-                        }
 
                         Object.keys(resp_reports[report_type]).map(data_id => {
-                            if(!reports[report_type].hasOwnProperty(data_id)){
-                                reports[report_type][data_id] = resp_reports[report_type][data_id];
-                            }
                             $('#' + report_type + '_checkbox_' + data_id).prop('checked', resp_reports[report_type][data_id]);
                         })
+
+                        if(Object.keys(resp_reports[report_type]).length > 0) {
+                            $('.admin-manager-form-input-result[data-type="' + report_type + '"]').text(Object.keys(resp_reports[report_type]).length + " selected");
+                        }  
                     });
                 }
 

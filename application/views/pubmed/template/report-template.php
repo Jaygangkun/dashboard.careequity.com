@@ -57,7 +57,7 @@ $status_str = $this->libglobal->getStatusString($report['status']);
                 <div class="report-list-col-info-col-50">
                     <div class="report-list-info-col-wrap">
                         <div class="report-list-info-input-wrap">
-                            <input type="text" class="report-list-info-input" name="title" value="<?php echo $report['title'] ?>" disabled1>
+                            <input type="text" class="report-list-info-input" name="title" value="<?php echo $report['title'] ?>" disabled>
                             <i class="material-icons report-list-info-edit-btn">edit</i>
                         </div>
                         <div class="report-list-info-title">Author: <?php //echo $_SESSION['username']; ?></div>
@@ -68,7 +68,7 @@ $status_str = $this->libglobal->getStatusString($report['status']);
                         <div class="report-list-info-title">Field</div>
                         <div class="report-list-info-input-wrap">
 
-                            <select class="report-list-info-input" name="field" disabled1>
+                            <select class="report-list-info-input" name="field" disabled>
                                 <?php
                                 if (isset($fields)) {
                                     foreach ($fields as $field) {
@@ -90,7 +90,7 @@ $status_str = $this->libglobal->getStatusString($report['status']);
                         <div class="report-list-info-col-wrap fs-small">
                             <div class="report-list-info-title">Search terms</div>
                             <div class="report-list-info-input-wrap">
-                                <input type="text" class="report-list-info-input" name="term" value="<?php echo $report['conditions'] ?>" disabled1>
+                                <input type="text" class="report-list-info-input" name="term" value="<?php echo $report['conditions'] ?>" disabled>
                                 <i class="material-icons report-list-info-edit-btn">edit</i>
                             </div>
                         </div>
@@ -99,7 +99,7 @@ $status_str = $this->libglobal->getStatusString($report['status']);
                         <div class="report-list-info-col-wrap fs-small">
                             <div class="report-list-info-title" style="visibility: hidden;">Plus</div>
                             <div class="report-list-info-input-wrap">
-                                <select class="report-list-info-input" name="plus" disabled1>
+                                <select class="report-list-info-input" name="plus" disabled>
                                     <?php
                                     if (isset($plues)) {
                                         foreach ($plues as $plus) {
@@ -119,7 +119,7 @@ $status_str = $this->libglobal->getStatusString($report['status']);
                     <div class="report-list-info-col-wrap fs-small">
                         <div class="report-list-info-title">Additional search parameters</div>
                         <div class="report-list-info-input-wrap">
-                            <input type="text" class="report-list-info-input" name="parameter" value="<?php echo $report['terms'] ?>" disabled1>
+                            <input type="text" class="report-list-info-input" name="parameter" value="<?php echo $report['terms'] ?>" disabled>
                             <i class="material-icons report-list-info-edit-btn">edit</i>
                         </div>
                     </div>

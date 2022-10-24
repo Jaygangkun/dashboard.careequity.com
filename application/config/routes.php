@@ -59,6 +59,11 @@ $route['backend/dashboard/delete'] = 'BackendController/dashboard_delete';
 $route['backend/dashboard/edit'] = 'BackendController/dashboard_edit';
 $route['backend/dashboard/update'] = 'BackendController/dashboard_update';
 
+$route['PublicApi/GetGroups.ashx'] = 'linkedin/AdminAPIController/GetGroups';
+$route['PublicApi/GetGroupProfiles.ashx/(:any)'] = 'linkedin/AdminAPIController/GetGroupProfiles/$1';
+$route['PublicApi/GetProfileDiff.ashx/(:any)'] = 'linkedin/AdminAPIController/GetProfileDiff/$1';
+$route['PublicApi/GetCompanyProfiles.ashx/(:any)/(:any)'] = 'linkedin/AdminAPIController/GetCompanyProfiles/$1/$2';
+
 $route['biorxiv/admin_api/report_search'] = 'biorxiv/AdminAPIController/reportSearch';
 $route['biorxiv/admin_api/report_get_week_list'] = 'biorxiv/AdminAPIController/reportGetWeekList';
 $route['biorxiv/admin_api/rss_download'] = 'biorxiv/RSSController/rssDownload';
@@ -79,6 +84,6 @@ $route['clinical/admin_api/download_csv'] = 'clinical/RSSController/downloadList
 $route['clinical/admin_api/popup_update'] = 'clinical/RSSController/rssPopup';
 $route['clinical/admin_api/download_dates_csv'] = 'clinical/RSSController/downloadDatesListCsv';
 
-$route['(:any)'] = 'PageController/dashboard/$1';
-
 $route['test'] = 'PageController/test';
+
+$route['(:any)'] = 'PageController/dashboard/$1';

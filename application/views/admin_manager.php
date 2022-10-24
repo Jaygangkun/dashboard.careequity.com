@@ -23,7 +23,8 @@
     <link rel="stylesheet" href="<?= base_url() ?>assets/css/dashboard.css">
     
     <script type="text/javascript">
-        var base_url = "<?php echo base_url()?>";
+        const base_url = "<?php echo base_url()?>";
+        const talent_lib_server = "<?php echo $this->config->item("talent_lib_server")?>";
     </script>
 </head>
 <body class="admin-manager-page">
@@ -58,15 +59,15 @@
                         <div class="admin-manager-form-input-wrap-right-right">
                             <div class="admin-manager-form-input-label">add users</div>
                             <div class="admin-manager-form-input-controls">
-                                <input type="text" class="admin-manager-form-input-control" placeholder="Email User Name" name="username1"></input>
+                                <input type="text" class="admin-manager-form-input-control" placeholder="Email" name="username1"></input>
                                 <input type="password" class="admin-manager-form-input-control" placeholder="Password" name="password1"></input>
                             </div>
                             <div class="admin-manager-form-input-controls">
-                                <input type="text" class="admin-manager-form-input-control" placeholder="Email User Name" name="username2"></input>
+                                <input type="text" class="admin-manager-form-input-control" placeholder="Email" name="username2"></input>
                                 <input type="password" class="admin-manager-form-input-control" placeholder="Password" name="password2"></input>
                             </div>
                             <div class="admin-manager-form-input-controls">
-                                <input type="text" class="admin-manager-form-input-control" placeholder="Email User Name" name="username3"></input>
+                                <input type="text" class="admin-manager-form-input-control" placeholder="Email" name="username3"></input>
                                 <input type="password" class="admin-manager-form-input-control" placeholder="Password" name="password3"></input>
                             </div>
                         </div>
@@ -84,6 +85,7 @@
                         </div>
                         <div class="admin-manager-form-input-wrap-right-right">
                             <div class="admin-manager-form-input-label">select linkedin accounts</div>
+                            <div class="admin-manager-form-input-result" data-type="linkedin"></div>
                         </div>
                     </div>
                 </div>
@@ -97,6 +99,7 @@
                         </div>
                         <div class="admin-manager-form-input-wrap-right-right">
                             <div class="admin-manager-form-input-label">select biorxiv reports</div>
+                            <div class="admin-manager-form-input-result" data-type="biorxiv"></div>
                         </div>
                     </div>
                 </div>
@@ -110,6 +113,7 @@
                         </div>
                         <div class="admin-manager-form-input-wrap-right-right">
                             <div class="admin-manager-form-input-label">select pubmed reports</div>
+                            <div class="admin-manager-form-input-result" data-type="pubmed"></div>
                         </div>
                     </div>
                 </div>
@@ -123,6 +127,7 @@
                         </div>
                         <div class="admin-manager-form-input-wrap-right-right">
                             <div class="admin-manager-form-input-label">select clinical trials reports</div>
+                            <div class="admin-manager-form-input-result" data-type="clinical"></div>
                         </div>
                     </div>
                 </div>
@@ -185,10 +190,47 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
                     <h4 class="modal-title"></h4>
+                    <div class="modal-header-btns-wrap">
+                        <span class="" id="btn_modal_select_cancel" data-dismiss="modal">Cancel</span>
+                        <span class="" id="btn_modal_select_save">Save</span>
+                    </div>
                 </div>
                 <div class="modal-body">
+                <?php
+                    if(isset($reports['linkedin'])) {
+                        ?>
+                        <div class="modal-table-content" id="linkedin">
+                            <table id="linkedin_list" class="table table-bordered table-striped table-hover dataTable">
+                                <thead>
+                                    <tr>
+                                        <td></td>
+                                        <td>Name</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    foreach($reports['linkedin'] as $report) {
+                                        ?>
+                                        <tr>
+                                            <td>
+                                                <label class="checkbox-container">
+                                                    <input type="checkbox" class="checkbox-linkedin" data-type="linkedin" data-id="<?php echo $report['Id']?>" id="linkedin_checkbox_<?php echo $report['Id']?>">
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                            </td>
+                                            <td><?php echo $report['Name']?></td>
+                                        </tr>
+                                        <?php
+                                    }
+                                    ?>
+                                </tbody>
+                            </table>
+                        </div>
+                        <?php
+                    }
+                    ?>
                     <?php
                     if(isset($reports['biorxiv'])) {
                         ?>
@@ -207,7 +249,7 @@
                                         <tr>
                                             <td>
                                                 <label class="checkbox-container">
-                                                    <input type="checkbox" data-type="biorxiv" data-id="<?php echo $report['id']?>" id="biorxiv_checkbox_<?php echo $report['id']?>">
+                                                    <input type="checkbox" class="checkbox-biorxiv" data-type="biorxiv" data-id="<?php echo $report['id']?>" id="biorxiv_checkbox_<?php echo $report['id']?>">
                                                     <span class="checkmark"></span>
                                                 </label>
                                             </td>
@@ -240,7 +282,7 @@
                                         <tr>
                                             <td>
                                                 <label class="checkbox-container">
-                                                    <input type="checkbox" data-type="pubmed" data-id="<?php echo $report['id']?>" id="pubmed_checkbox_<?php echo $report['id']?>">
+                                                    <input type="checkbox" class="checkbox-pubmed" data-type="pubmed" data-id="<?php echo $report['id']?>" id="pubmed_checkbox_<?php echo $report['id']?>">
                                                     <span class="checkmark"></span>
                                                 </label>
                                             </td>
@@ -273,7 +315,7 @@
                                         <tr>
                                             <td>
                                                 <label class="checkbox-container">
-                                                    <input type="checkbox" data-type="clinical" data-id="<?php echo $report['id']?>" id="clinical_checkbox_<?php echo $report['id']?>">
+                                                    <input type="checkbox" class="checkbox-clinical" data-type="clinical" data-id="<?php echo $report['id']?>" id="clinical_checkbox_<?php echo $report['id']?>">
                                                     <span class="checkmark"></span>
                                                 </label>
                                             </td>

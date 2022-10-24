@@ -24,6 +24,8 @@
 	<link rel="stylesheet" href="<?= base_url() ?>assets/css/biorxiv/style.css?v=<?php echo time() ?>">
     <link rel="stylesheet" href="<?= base_url() ?>assets/css/pubmed/style.css?v=<?php echo time() ?>">
     <link rel="stylesheet" href="<?= base_url() ?>assets/css/clinical/style.css?v=<?php echo time() ?>">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/css/linkedin/angular-material.min.css?v=<?php echo time() ?>">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/css/linkedin/style.css?v=<?php echo time() ?>">
     <!-- <link rel="stylesheet" href="<?= base_url() ?>assets/css/style.css"> -->
 	<link rel="stylesheet" href="<?= base_url() ?>assets/css/dashboard.css?v=<?php echo time() ?>">
 
@@ -44,11 +46,12 @@
     <script type="text/javascript" src="<?= base_url() ?>assets/js/graphiq.js"></script>
 
     <script type="text/javascript">
-        var base_url = "<?php echo base_url()?>";
+        const base_url = "<?php echo base_url()?>";
         const ALERT_SUCCESS = 'success';
         const ALERT_FAIL = 'fail';
         const ALERT_NORMAL = 'normal';
 
+        const talent_lib_server = "<?php echo $this->config->item("talent_lib_server")?>";
     </script>
 </head>
 <body class="user-dashboard-page">
@@ -76,10 +79,11 @@
         <div class="reports-container">
             <?php
             if(isset($reports) && isset($reports['linkedin'])) {
+                $data = [];
                 ?>
-                <div class="reports-wrap" id="reports_linkedin">
+                <div class="reports-wrap" id="reports_linkedin" style="">
                     <?php
-                    echo "linkedin";
+                    $this->load->view('linkedin/dashboard', $data);
                     ?>
                 </div>                
                 <?php

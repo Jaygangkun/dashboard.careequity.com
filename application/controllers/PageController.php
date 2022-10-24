@@ -72,12 +72,22 @@ class PageController extends CI_Controller
         // // // $result = $local_db->query('SELECT * FROM reports')->result_array();
         // // // $data['reports']['biorxiv'] = $result;
         // // $local_db->close();
-
+        // $local_db = $this->load->database('talent', TRUE); 
+        // // $result = $local_db->query('SELECT * FROM reports')->result_array();
+        // // $data['reports']['biorxiv'] = $result;
+        // $local_db->close();
         // die();
         $data = array(
             'reports' => array()
         );
 
+        $data['reports']['linkedin'] = [];
+        $linkedin_profiles_resp = get_url_resp($this->config->item("talent_lib_server").'PublicApi/GetAllProfiles.ashx');
+
+        if($linkedin_profiles_resp && isset($linkedin_profiles_resp['success']) && $linkedin_profiles_resp['success']) {
+            $data['reports']['linkedin'] = $linkedin_profiles_resp['profiles'];
+        }
+        
         $local_db = $this->load->database('biorxiv', TRUE); 
         $result = $local_db->query('SELECT * FROM reports')->result_array();
         $data['reports']['biorxiv'] = $result;
@@ -160,6 +170,10 @@ class PageController extends CI_Controller
 	}
 
     public function test(){
+        $local_db = $this->load->database('talent', TRUE); 
+        // $result = $local_db->query('SELECT * FROM reports')->result_array();
+        // $data['reports']['biorxiv'] = $result;
+        $local_db->close();
         echo "Test:";die();
         $email = 'evan@orangelinelab.com';
         $email = 'peter@careequity.com';

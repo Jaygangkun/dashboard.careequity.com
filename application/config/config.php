@@ -528,10 +528,4 @@ $config['rewrite_short_tags'] = FALSE;
 */
 $config['proxy_ips'] = '';
 
-
-// Teenstreet 
-$config['ts_client_id'] = '303';
-$config['ts_password'] = 'lS%!r3pjy@0SzMs!8Ln';
-$config['ts_service'] = 'subject_upload';
-$config['ts_mode'] = 'PROD';
-$config['ts_source'] = 'TheDriverBoardLead';
+$config["talent_lib_server"] = "https://localhost:44311/";

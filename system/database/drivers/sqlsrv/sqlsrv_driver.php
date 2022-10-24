@@ -149,7 +149,7 @@ class CI_DB_sqlsrv_driver extends CI_DB {
 			$this->_quoted_identifier = empty($query) ? FALSE : (bool) $query['qi'];
 			$this->_escape_char = ($this->_quoted_identifier) ? '"' : array('[', ']');
 		}
-
+		
 		return $this->conn_id;
 	}
 

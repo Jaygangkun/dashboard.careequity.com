@@ -233,7 +233,8 @@ $db['pubmed'] = array(
 
 $db['talent'] = array(
 	// 'dsn'	=> 'Data source=172.106.164.46;initial catalog=TalentLibrary;persist security info=True;user id=sa;password=pucdakSD#%10gmy;',
-	'hostname' => '172.106.164.46',
+	// 'hostname' => '172.106.164.46',
+	'hostname' => 'sqlsrv:Server=172.106.164.46;Database=TalentLibrary',
 	// 'username' => 'root',
 	// 'password' => 'root',
 	// 'database' => 'biorxivcareequit_biorxiv',
@@ -241,7 +242,8 @@ $db['talent'] = array(
 	'username' => 'sa',
 	'password' => 'pucdakSD#%10gmy',
 	'database' => 'TalentLibrary',
-	'dbdriver' => 'sqlsrv',
+	// 'dbdriver' => 'sqlsrv',
+	'dbdriver' => 'pdo',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'),

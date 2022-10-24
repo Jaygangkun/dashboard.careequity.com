@@ -113,7 +113,7 @@
     font-size: 16px;
     font-weight: bold;
     text-transform: uppercase;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
 .admin-manager-form-input-control {
@@ -325,4 +325,52 @@ select.admin-manager-form-input-control {
 
 .report-add-area {
     display: none;
+}
+
+#modal_select .modal-header {
+    position: relative;
+}
+
+#modal_select .modal-header-btns-wrap {
+    position: absolute;
+    right: 25px;
+    top: 38px;
+    transform: translateY(-50%);
+}
+
+#btn_modal_select_cancel {
+    border: 1px solid #777;
+    padding: 10px 15px;
+    color: #777;
+    cursor: pointer;
+    margin: 0px 10px;
+}
+
+#btn_modal_select_cancel:hover {
+    color: #ffffff;
+    background: #777;
+}
+
+#btn_modal_select_save {
+    border: 1px solid transparent;
+    padding: 10px 15px;
+    background: #2196F3;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+#btn_modal_select_save:hover {
+    background: #337ab7;
+}
+
+.report-list-row {
+    margin-left: 0px;
+}
+
+#dashboard_linkedin .list_weekly {
+    border-right: 0px;
+}
+
+#dashboard_linkedin .created_time {
+    border-right: 0px;
 }
