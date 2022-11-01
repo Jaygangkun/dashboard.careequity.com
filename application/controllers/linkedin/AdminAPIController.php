@@ -43,4 +43,13 @@ class AdminAPIController extends CI_Controller
         
         echo json_encode($profiles);
     }
+
+    public function GetGroupProfileUpdates()
+    {
+        $groups = post_url_resp($this->config->item("talent_lib_server").'PublicApi/GetCompanyProfileUpdates.ashx', array(
+            'profile_ids' => $_POST['profile_ids']
+        ));
+        
+        echo json_encode($groups);
+    }
 }

@@ -57,22 +57,22 @@
 <body class="user-dashboard-page">
     <div class="loading-screen"><div class="loader"></div></div>
     <div class="admin-manager-container">
-        <h1 class="">User Dashboard</h1>
+        <h1 class="user-dashboard-name"><?php echo $dashboard['name']?></h1>
         <div class="reports-header">
-            <div class="report-header-wrap">
-                <div class="report-header-updates-count">32 Updates</div>
+            <div class="report-header-wrap <?php echo isset($reports) && !isset($reports['linkedin']) ? 'disabled' : ''?>">
+                <div class="report-header-updates-count" id="report_count_linkedin"><?php echo isset($reports) && !isset($reports['linkedin']) ? 'No Accounts' : 'Calculating...'?></div>
                 <div class="report-header-btn-switch active" data-target="#reports_linkedin">linkedin accounts</div>
             </div>
-            <div class="report-header-wrap">
-                <div class="report-header-updates-count">5 Updates</div>
+            <div class="report-header-wrap <?php echo isset($reports) && !isset($reports['biorxiv']) ? 'disabled' : ''?>">
+                <div class="report-header-updates-count" id="report_count_biorxiv"><?php echo isset($reports) && !isset($reports['biorxiv']) ? 'No Reports' : 'Calculating...'?></div>
                 <div class="report-header-btn-switch" data-target="#reports_biorxiv">biorxiv reports</div>
             </div>
-            <div class="report-header-wrap">
-                <div class="report-header-updates-count disable">0 Updates</div>
+            <div class="report-header-wrap <?php echo isset($reports) && !isset($reports['pubmed']) ? 'disabled' : ''?>">
+                <div class="report-header-updates-count" id="report_count_pubmed"><?php echo isset($reports) && !isset($reports['pubmed']) ? 'No Reports' : 'Calculating...'?></div>
                 <div class="report-header-btn-switch" data-target="#reports_pubmed">pubmed reports</div>
             </div>
-            <div class="report-header-wrap">
-                <div class="report-header-updates-count">32 Updates</div>
+            <div class="report-header-wrap <?php echo isset($reports) && !isset($reports['clinical']) ? 'disabled' : ''?>">
+                <div class="report-header-updates-count" id="report_count_clinical"><?php echo isset($reports) && !isset($reports['clinical']) ? 'No Reports' : 'Calculating...'?></div>
                 <div class="report-header-btn-switch" data-target="#reports_clinical">clinical trials reports</div>
             </div>
         </div>
@@ -114,6 +114,9 @@
                 
                 ?>
                 <div class="reports-wrap" id="reports_biorxiv" style="display: none">
+                    <script>
+                        const biorxiv_reports_ids = <?php echo json_encode($report_ids)?>;
+                    </script>
                     <?php
                     $this->load->view('biorxiv/dashboard', $data);
                     ?>
@@ -142,6 +145,9 @@
                 $data['reports'] = $this->libpubmeddb->reports_load_by_ids($report_ids);
                 ?>
                 <div class="reports-wrap" id="reports_pubmed" style="display: none">
+                    <script>
+                        const pubmed_reports_ids = <?php echo json_encode($report_ids)?>;
+                    </script>
                     <?php
                     $this->load->view('pubmed/dashboard', $data);
                     ?>
@@ -168,6 +174,9 @@
                 $data['reports'] = $this->libclinicaldb->reports_load_by_ids($report_ids);
                 ?>
                 <div class="reports-wrap" id="reports_clinical" style="display: none">
+                    <script>
+                        const clinical_reports_ids = <?php echo json_encode($report_ids)?>;
+                    </script>
                     <?php
                     $this->load->view('clinical/dashboard', $data);
                     ?>

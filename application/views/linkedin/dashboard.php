@@ -80,7 +80,7 @@
                         </button>
                     </div>
                 </div>
-                <div class="content-container">
+                <div class="content-container" style="display:none">
                     <span class="profile_count">{{selectedGroup.ProfileCount + ' profiles'}}</span>
                     <span class="created_time">{{selectedGroup.UpdatedProfilesCount + ' checked'}}</span>
                     <span class="list_weekly">

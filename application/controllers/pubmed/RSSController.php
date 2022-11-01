@@ -608,4 +608,72 @@ class RSSController extends CI_Controller
 
 		//exit;
 	}
+
+	public function reportUpdates()
+	{
+		$resp = array(
+			'success' => true,
+		);
+
+		if(!isset($_POST['report_ids'])) {
+			$resp['success'] = false;
+			echo json_encode($resp); die();
+		}
+
+		set_time_limit(0);
+
+		$reports_count = 0;
+		foreach($_POST['report_ids'] as $report_id) {
+			$saved_reports = $this->libpubmeddb->reports_all_saved($report_id);
+					
+
+			$data = array(
+				'clinics' => array(),
+				'title' => ""
+			);
+			$guids =  array();
+
+			foreach ($saved_reports as $saved_report) {
+
+
+
+
+
+
+				//writeLog('old:' . $report['guids']);
+				//writeLog('---current:' . $saved_report['guid']);
+				//WriteLog('Pos count:' . $pos);
+
+
+				$details['creator'] =  $saved_report['author'];
+				$details['identifier'] =  $saved_report['identifier'];
+
+				$details['link'] =  $saved_report['link'];
+				$details['title'] =  $saved_report['title'];
+				$details['description'] =  $saved_report['description'];
+				$details['guid'] =  $saved_report['guid'];
+				$details['pubdate'] =  $saved_report['pubdate'];
+
+
+				$data['clinics'][] = $details;
+
+
+
+				$guids[] =  $saved_report['guid'];
+
+
+				//writeLog('--current saved report:' . $saved_report['guid']);
+
+				$data['title'] =  $saved_report['report_title'];
+			}
+
+			if(count($data['clinics']) > 0) {
+				$reports_count ++;
+			}
+		}
+
+		$resp['count'] = $reports_count;
+
+		echo json_encode($resp); 
+	}
 }

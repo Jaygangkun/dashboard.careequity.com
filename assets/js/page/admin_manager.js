@@ -149,13 +149,17 @@ var reports_tmp = {};
         $('[name="dashboard_name"]').val('');
 
         for(var index = 1; index <= user_count; index++) {
-            $('[name="username' + index + '"]').val('');
+            $('[name="email' + index + '"]').val('');
             $('[name="password' + index + '"]').val('');
         }
 
         $('.admin-manager-form-input-result').text("");
 
         $('#modal_select [type="checkbox"]').prop('checked', false);
+
+        reports = {};
+
+        $('#btn_dashboard_publish').attr('dashboard-id', '');
     }
 
     $(document).on('click', '#btn_dashboard_publish', function() {
@@ -165,9 +169,9 @@ var reports_tmp = {};
             return;
         }
 
-        if($('[name="username1"]').val() == '') {
-            alert('Please Input User Name');
-            $('[name="username1"]').focus();
+        if($('[name="email1"]').val() == '') {
+            alert('Please Input Email');
+            $('[name="email1"]').focus();
             return;
         }
 
@@ -185,7 +189,7 @@ var reports_tmp = {};
         
         for(var index = 1; index <= user_count; index++) {
             publish_data['users'].push({
-                username: $('[name="username' + index + '"]').val(),
+                email: $('[name="email' + index + '"]').val(),
                 password: $('[name="password' + index + '"]').val()
             })
         }
@@ -224,6 +228,10 @@ var reports_tmp = {};
             })
         }
         
+    })
+
+    $(document).on('click', '#btn_dashboard_new', function() {
+        clearAdminManagerForm();
     })
 
     $(document).on('click', '#btn_dashboard_edit', function() {
@@ -271,7 +279,7 @@ var reports_tmp = {};
 
                 if(resp.users) {
                     for(var index = 1; index <= resp.users.length; index++) {
-                        $('[name="username' + index + '"]').val(resp.users[index - 1].username);
+                        $('[name="email' + index + '"]').val(resp.users[index - 1].email);
                         // $('[name="password' + index + '"]').val(resp.users[index - 1].password);
                     }
                 }

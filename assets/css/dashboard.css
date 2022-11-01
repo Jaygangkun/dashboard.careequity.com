@@ -34,18 +34,21 @@
 }
 
 .admin-manager-container {
-    width: 80%;
+    width: 96%;
     margin: auto;
+    max-width: 1480px;
 }
 
 .admin-manager-page input[type="checkbox"] {
     position: static;
     opacity: 1;
+    display: none;
 }
 
 .admin-manager-form-container {
     margin-top: 30px;
     display: flex;
+    flex-wrap: wrap;
 }
 
 .admin-manager-form-col {
@@ -137,6 +140,7 @@ select.admin-manager-form-input-control {
     color: #BDBDBD;
     font-size: 18px;
     margin-top: 10px;
+    word-break: break-word;
 }
 
 .admin-manager-form-input-controls {
@@ -224,6 +228,7 @@ select.admin-manager-form-input-control {
     width: 20px;
     /* background-color: #eee; */
     border: 1px solid #000000;
+    transform: translateY(-50%);
 }
 
 /* On mouse-over, add a grey background color */
@@ -283,6 +288,7 @@ select.admin-manager-form-input-control {
     font-weight: bold;
     color: #000000;
     margin-bottom: 5px;
+    min-height: 20px;
 }
 
 .report-header-updates-count.disable {
@@ -301,6 +307,11 @@ select.admin-manager-form-input-control {
 .report-header-btn-switch.active {
     color: #ffffff;
     background: #000000;
+}
+
+.disabled .report-header-btn-switch {
+    background: #909090;
+    color: #ffffff;
 }
 
 .reports-container {
@@ -374,4 +385,33 @@ select.admin-manager-form-input-control {
 
 #dashboard_linkedin .created_time {
     border-right: 0px;
+}
+
+.user-dashboard-name {
+    text-transform: capitalize;
+}
+
+@media screen and (max-width: 1170px) {
+    .admin-manager-form-container {
+        justify-content: flex-end;
+    }
+    .admin-manager-form-col {
+        width: 47%;
+    }
+
+    .admin-manager-dashboard-list {
+        margin-top: 0px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .admin-manager-form-container {
+        display: block;
+    }
+
+    .admin-manager-form-col {
+        margin: auto;
+        width: 80%;
+        max-width: 420px;
+    }
 }

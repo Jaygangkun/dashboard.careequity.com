@@ -123,9 +123,9 @@ class BackendController extends CI_Controller
 
         if(isset($_POST['users'])) {
             foreach($_POST['users'] as $user) {
-                if($user['username'] != '' && $user['password'] != '') {
+                if($user['email'] != '' && $user['password'] != '') {
                     $this->Users->add(array(
-                        'username' => $user['username'],
+                        'email' => $user['email'],
                         'password' => $user['password'],
                         'dashboard_id' => $dashboard_id
                     ));
@@ -133,7 +133,7 @@ class BackendController extends CI_Controller
             }
         }
 
-        $dashboard_url = base_url(isset($_POST['dashboard_name']) ? $_POST['dashboard_name'] : '');
+        $dashboard_url = base_url(isset($_POST['dashboard_name']) ? slugify($_POST['dashboard_name']) : '');
         echo json_encode(array(
             'success' => true,
             'dashboard_id' => $dashboard_id,
@@ -166,9 +166,9 @@ class BackendController extends CI_Controller
         $this->Users->deleteByDashboardID(isset($_POST['dashboard_id']) ? $_POST['dashboard_id'] : '');
         if(isset($_POST['users'])) {
             foreach($_POST['users'] as $user) {
-                if($user['username'] != '' && $user['password'] != '') {
+                if($user['email'] != '' && $user['password'] != '') {
                     $this->Users->add(array(
-                        'username' => $user['username'],
+                        'email' => $user['email'],
                         'password' => $user['password'],
                         'dashboard_id' => $dashboard_id
                     ));
@@ -179,7 +179,7 @@ class BackendController extends CI_Controller
         $dashboard_trs = '';
         $dashboards = $this->Dashboards->load();
         foreach($dashboards as $dashboard) {
-            $dashboard_url = base_url($dashboard['name']);
+            $dashboard_url = base_url($dashboard['slug']);
             $dashboard_id = $dashboard['id'];
             $dashboard_trs .= <<<EOD
                 <div class="admin-manager-dashboard-list-table-tr">
@@ -213,7 +213,7 @@ class BackendController extends CI_Controller
         $dashboard_trs = '';
         $dashboards = $this->Dashboards->load();
         foreach($dashboards as $dashboard) {
-            $dashboard_url = base_url($dashboard['name']);
+            $dashboard_url = base_url($dashboard['slug']);
             $dashboard_id = $dashboard['id'];
             $dashboard_trs .= <<<EOD
                 <div class="admin-manager-dashboard-list-table-tr">

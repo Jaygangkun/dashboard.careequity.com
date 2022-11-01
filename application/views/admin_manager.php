@@ -59,15 +59,15 @@
                         <div class="admin-manager-form-input-wrap-right-right">
                             <div class="admin-manager-form-input-label">add users</div>
                             <div class="admin-manager-form-input-controls">
-                                <input type="text" class="admin-manager-form-input-control" placeholder="Email" name="username1"></input>
+                                <input type="text" class="admin-manager-form-input-control" placeholder="Email" name="email1"></input>
                                 <input type="password" class="admin-manager-form-input-control" placeholder="Password" name="password1"></input>
                             </div>
                             <div class="admin-manager-form-input-controls">
-                                <input type="text" class="admin-manager-form-input-control" placeholder="Email" name="username2"></input>
+                                <input type="text" class="admin-manager-form-input-control" placeholder="Email" name="email2"></input>
                                 <input type="password" class="admin-manager-form-input-control" placeholder="Password" name="password2"></input>
                             </div>
                             <div class="admin-manager-form-input-controls">
-                                <input type="text" class="admin-manager-form-input-control" placeholder="Email" name="username3"></input>
+                                <input type="text" class="admin-manager-form-input-control" placeholder="Email" name="email3"></input>
                                 <input type="password" class="admin-manager-form-input-control" placeholder="Password" name="password3"></input>
                             </div>
                         </div>
@@ -172,7 +172,7 @@
                                             </label>
                                         </div>
                                         <div class="admin-manager-dashboard-list-table-td">
-                                            <span class="admin-manager-dashboard-list-url">URL = <?php echo base_url($dashboard['name'])?></span>
+                                            <span class="admin-manager-dashboard-list-url">URL = <?php echo base_url($dashboard['slug'])?></span>
                                         </div>
                                     </div>
                                     <?php

@@ -53,6 +53,9 @@ $route['default_controller'] = 'PageController';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
+$route['login'] = 'PageController/login';
+$route['verification'] = 'PageController/verification';
+
 $route['backend/reports/load'] = 'BackendController/reports_load';
 
 $route['backend/dashboard/publish'] = 'BackendController/dashboard_publish';
@@ -64,12 +67,14 @@ $route['PublicApi/GetGroups.ashx'] = 'linkedin/AdminAPIController/GetGroups';
 $route['PublicApi/GetGroupProfiles.ashx'] = 'linkedin/AdminAPIController/GetGroupProfiles';
 $route['PublicApi/GetProfileDiff.ashx/(:any)'] = 'linkedin/AdminAPIController/GetProfileDiff/$1';
 $route['PublicApi/GetCompanyProfiles.ashx/(:any)/(:any)'] = 'linkedin/AdminAPIController/GetCompanyProfiles/$1/$2';
+$route['PublicApi/GetGroupProfileUpdates.ashx'] = 'linkedin/AdminAPIController/GetGroupProfileUpdates';
 
 $route['biorxiv/admin_api/report_search'] = 'biorxiv/AdminAPIController/reportSearch';
 $route['biorxiv/admin_api/report_get_week_list'] = 'biorxiv/AdminAPIController/reportGetWeekList';
 $route['biorxiv/admin_api/rss_download'] = 'biorxiv/RSSController/rssDownload';
 $route['biorxiv/admin_api/download_csv'] = 'biorxiv/RSSController/downloadListCsv';
 $route['biorxiv/admin_api/popup_update'] = 'biorxiv/RSSController/rssPopup';
+$route['biorxiv/admin_api/report_updates'] = 'biorxiv/RSSController/reportUpdates';
 
 $route['pubmed/admin_api/report_search'] = 'pubmed/AdminAPIController/reportSearch';
 $route['pubmed/admin_api/report_get_week_list'] = 'pubmed/AdminAPIController/reportGetWeekList';
@@ -77,6 +82,7 @@ $route['pubmed/admin_api/rss_download'] = 'pubmed/RSSController/rssDownload';
 $route['pubmed/admin_api/download_csv'] = 'pubmed/RSSController/downloadListCsv';
 $route['pubmed/admin_api/popup_update'] = 'pubmed/RSSController/rssPopup';
 $route['pubmed/admin_api/download_dates_csv'] = 'pubmed/RSSController/downloadDatesListCsv';
+$route['pubmed/admin_api/report_updates'] = 'pubmed/RSSController/reportUpdates';
 
 $route['clinical/admin_api/report_search'] = 'clinical/AdminAPIController/reportSearch';
 $route['clinical/admin_api/report_get_week_list'] = 'clinical/AdminAPIController/reportGetWeekList';
@@ -84,6 +90,7 @@ $route['clinical/admin_api/rss_download'] = 'clinical/RSSController/rssDownload'
 $route['clinical/admin_api/download_csv'] = 'clinical/RSSController/downloadListCsv';
 $route['clinical/admin_api/popup_update'] = 'clinical/RSSController/rssPopup';
 $route['clinical/admin_api/download_dates_csv'] = 'clinical/RSSController/downloadDatesListCsv';
+$route['clinical/admin_api/report_updates'] = 'pubmed/RSSController/reportUpdates';
 
 $route['test'] = 'PageController/test';
 

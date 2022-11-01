@@ -737,4 +737,215 @@ class RSSController extends CI_Controller
 		//exit;
 	}
 
+	public function reportUpdates()
+	{
+		$resp = array(
+			'success' => true,
+		);
+
+		if(!isset($_POST['report_ids'])) {
+			$resp['success'] = false;
+			echo json_encode($resp); die();
+		}
+		
+		set_time_limit(0);
+
+		$update_counts = 0;
+		foreach($_POST['report_ids'] as $report_id) {
+			$reports = $this->libbiorxivdb->reports_get_by_id($report_id);
+			if (count($reports) == 0) {
+				continue;
+			}
+
+			$report = $reports[0];
+
+
+
+			$current_date = date("Y-m-d");
+			$yesterday_date = date('Y-m-d', strtotime("-2 days"));
+			$date_sentence = " limit_from:" . $yesterday_date . " limit_to:" . $current_date . " numresults:75 sort:relevance-rank format_result:standard";
+
+
+			$total_title = "";
+
+			//original search text
+			if ($report['terms'] != "") {
+				if ($report['study'] == "-- All Collections --") {
+					$origin_search_str = $report['conditions'] . " " . $report['country'] . " " . $report['terms'] . " " . "jcode:biorxiv" . $date_sentence;
+				} else {
+					$origin_search_str = $report['conditions'] . " " . $report['country'] . " " . $report['terms'] . " " . "jcode:biorxiv" . " " . "subject_collection_code:" . $report['study'] . " " . $date_sentence;
+				}
+
+				$total_title =  $report['conditions'] . " " . $report['country'] . " " . $report['terms'];
+			} else {
+				if ($report['study'] == "-- All Collections --") {
+					$origin_search_str = $report['conditions'] . " " . "jcode:biorxiv" . $date_sentence;
+				} else {
+					$origin_search_str = $report['conditions'] . " " . "jcode:biorxiv" . " " . "subject_collection_code:" . $report['study'] . " " . $date_sentence;
+				}
+
+				$total_title = $report['conditions'];
+			}
+
+
+			$encode_search_str = urlencode($origin_search_str);
+
+
+
+			$curl = curl_init();
+
+			curl_setopt_array($curl, array(
+				CURLOPT_URL => 'https://www.biorxiv.org/search/' . $encode_search_str,
+				CURLOPT_RETURNTRANSFER => true,
+				CURLOPT_ENCODING => '',
+				CURLOPT_MAXREDIRS => 10,
+				CURLOPT_TIMEOUT => 0,
+				CURLOPT_FOLLOWLOCATION => true,
+				CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+				CURLOPT_CUSTOMREQUEST => 'GET',
+			));
+
+			$response = curl_exec($curl);
+
+			curl_close($curl);
+			//echo $response;
+
+			// Create a DOM object from a HTML file
+			//$html = file_get_html('test.htm');
+
+			// Create a DOM object from a string
+			$html = str_get_html($response);
+
+
+
+			if(!$html) {
+				continue;
+			}
+			$data = array(
+				'clinics' => array(),
+				'title' => $total_title
+			);
+
+
+
+			$page_counts = 0;
+
+
+			foreach ($html->find('.pager-items') as $ul) {
+				foreach ($ul->find('li.last a') as $li) {
+					$page_counts =  $li->plaintext;
+				}
+			}
+
+
+			if ($page_counts > 0) {
+
+				//First page
+				foreach ($html->find('.highwire-cite-highwire-article') as $ul) {
+
+
+
+					foreach ($ul->find('.highwire-cite-linked-title') as $ele_title) {
+						$details['title'] = $ele_title->plaintext;
+						$details['link'] = 'https://www.biorxiv.org' . $ele_title->href;
+					}
+
+					foreach ($ul->find('.highwire-citation-authors') as $ele_author) {
+						$details['creator'] = $ele_author->plaintext;
+					}
+
+					foreach ($ul->find('.highwire-cite-metadata-doi') as $newid) {
+						//echo $newid->plaintext;
+						$details['identifier'] = $newid->plaintext;
+					}
+
+
+					$data['clinics'][] = $details;
+				}
+
+
+				//Second page to last page
+				for ($i = 1; $i < $page_counts; $i++) {
+					$next_page_encodeurl = $encode_search_str . "?page=" . $i;
+					$curl = curl_init();
+
+					curl_setopt_array($curl, array(
+						CURLOPT_URL => 'https://www.biorxiv.org/search/' . $next_page_encodeurl,
+						CURLOPT_RETURNTRANSFER => true,
+						CURLOPT_ENCODING => '',
+						CURLOPT_MAXREDIRS => 10,
+						CURLOPT_TIMEOUT => 0,
+						CURLOPT_FOLLOWLOCATION => true,
+						CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+						CURLOPT_CUSTOMREQUEST => 'GET',
+					));
+
+					$response = curl_exec($curl);
+
+					curl_close($curl);
+					//echo $response;
+
+					// Create a DOM object from a string
+					$html = str_get_html($response);
+
+					foreach ($html->find('.highwire-cite-highwire-article') as $ul) {
+
+
+
+						foreach ($ul->find('.highwire-cite-linked-title') as $ele_title) {
+							$details['title'] = $ele_title->plaintext;
+							$details['link'] = 'https://www.biorxiv.org' . $ele_title->href;
+						}
+
+						foreach ($ul->find('.highwire-citation-authors') as $ele_author) {
+							$details['creator'] = $ele_author->plaintext;
+						}
+
+						foreach ($ul->find('.highwire-cite-metadata-doi') as $newid) {
+							//echo $newid->plaintext;
+							$details['identifier'] = $newid->plaintext;
+						}
+
+
+						$data['clinics'][] = $details;
+					}
+				}
+			} else {
+				// Only one page
+				foreach ($html->find('.highwire-cite-highwire-article') as $ul) {
+
+
+
+					foreach ($ul->find('.highwire-cite-linked-title') as $ele_title) {
+						$details['title'] = $ele_title->plaintext;
+						$details['link'] = 'https://www.biorxiv.org' . $ele_title->href;
+					}
+
+					foreach ($ul->find('.highwire-citation-authors') as $ele_author) {
+						$details['creator'] = $ele_author->plaintext;
+					}
+
+					foreach ($ul->find('.highwire-cite-metadata-doi') as $newid) {
+						//echo $newid->plaintext;
+						$details['identifier'] = $newid->plaintext;
+					}
+
+
+					$data['clinics'][] = $details;
+				}
+			}
+
+
+			if(count($data['clinics']) != 0) {
+				$update_counts ++;
+			}
+
+		}
+
+		$resp['count'] = $update_counts;
+
+
+		echo json_encode($resp);
+	}
+
 }

@@ -486,4 +486,119 @@ class RSSController extends CI_Controller
 
 		//exit;
 	}
+
+	public function reportUpdates()
+	{
+
+		$resp = array(
+			'success' => true,
+		);
+
+		if(!isset($_POST['report_ids'])) {
+			$resp['success'] = false;
+			echo json_encode($resp); die();
+		}
+
+		set_time_limit(0);
+		$update_counts = 0;
+
+		foreach($_POST['report_ids'] as $report_id) {
+			// $reports = $this->Reports->getByID($_POST['report_id']);
+			$reports = $this->libclinicaldb->reports_get_by_id($_POST['report_id']);
+			if (count($reports) == 0) {
+				echo ("Not find report");
+				die();
+			}
+
+			$report = $reports[0];
+
+			// create rss url
+			$rss_url = "https://clinicaltrials.gov/ct2/results/rss.xml?rcv_d=&lup_d=7&sel_rss=mod7&term=" . str_replace(" ", "+", $report['terms']) . "&type=" . $report['study'] . "&cond=" . str_replace(" ", "+", $report['conditions']) . "&cntry=" . $report['country'] . "&count=10";
+
+			$days = 7;
+			if ($report['status'] == 'new') {
+				$days = 7;
+			} else if ($report['status'] == 'recent') {
+				$days = 31;
+			} else if ($report['status'] == 'old') {
+				$days = 31 * 3;
+			}
+
+			$rss_url = $this->libglobal->getRssLink(array(
+				'days' => $days,
+				'terms' => $report['terms'],
+				'study' => $report['study'],
+				'conditions' => $report['conditions'],
+				'country' => $report['country'],
+				'count' => 30
+			));
+			// echo $rss_url; die();
+
+			$curl = curl_init();
+
+			curl_setopt_array($curl, array(
+				CURLOPT_URL => $rss_url,
+				CURLOPT_RETURNTRANSFER => true,
+				CURLOPT_ENCODING => '',
+				CURLOPT_MAXREDIRS => 10,
+				CURLOPT_TIMEOUT => 0,
+				CURLOPT_FOLLOWLOCATION => true,
+				CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+				CURLOPT_CUSTOMREQUEST => 'GET',
+				CURLOPT_HTTPHEADER => array(
+					'Cookie: CTOpts=Qihzm6CLC74Psi1HjyUgzw-R98Fz3R4gQC-w; Psid=vihzm6CLC74Psi1Hjyz3FQ7V9gCkkKC8-BC8Eg0jF64VSgzqSB78SB0gCD8V'
+				),
+			));
+
+			$response = curl_exec($curl);
+
+			curl_close($curl);
+
+			$xml = new SimpleXMLElement($response);
+
+			$data = array(
+				'clinics' => array(),
+				'title' => $xml->channel->title
+			);
+
+			foreach ($xml->channel->item as $item) {
+				//$details = getStudyDetails($item->link);
+				/*
+				$contents['link'] = $item->link;
+				$contents['title'] = $item->title;
+				$contents['description'] = $item->description;
+				$contents['guid'] = $item->guid ;
+				$contents['pubDate'] = $item->pubDate;
+				
+				$data['clinics'][] = $contents;
+				*/
+				$pos = strpos($report['guids'], $item->guid->__toString());
+
+				if ($pos === false) {
+
+
+					$details['link'] = $item->link;
+					$details['title'] = $item->title;
+					$details['description'] = $item->description;
+					$details['guid'] = $item->guid;
+					$details['pubDate'] = $item->pubDate;
+
+					$data['clinics'][] = $details;
+				}
+
+				//$guids[] = $item->guid->__toString();
+			}
+
+			if(count($data['clinics']) > 0) {
+				$update_counts++;
+			}
+		}
+
+		$resp['count'] = $update_counts;
+
+
+		echo json_encode($resp);
+
+		
+	}
 }
