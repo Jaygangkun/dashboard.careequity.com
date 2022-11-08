@@ -57,7 +57,7 @@
 <body class="user-dashboard-page">
     <div class="loading-screen"><div class="loader"></div></div>
     <div class="admin-manager-container">
-        <h1 class="user-dashboard-name"><?php echo $dashboard['name']?></h1>
+        <h1 class="user-dashboard-name"><?php echo $dashboard['name']?> Dashboard</h1>
         <div class="reports-header">
             <div class="report-header-wrap <?php echo isset($reports) && !isset($reports['linkedin']) ? 'disabled' : ''?>">
                 <div class="report-header-updates-count" id="report_count_linkedin"><?php echo isset($reports) && !isset($reports['linkedin']) ? 'No Accounts' : 'Calculating...'?></div>

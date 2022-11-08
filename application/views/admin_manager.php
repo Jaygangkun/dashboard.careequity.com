@@ -33,6 +33,47 @@
         <h1 class="">Admin Manager</h1>
         <div class="admin-manager-form-container">
             <div class="admin-manager-form-col">
+                <div class="admin-manager-dashboard-list">
+                    <h3 class="admin-manager-dashboard-list-title">PUBLISHED DASHBORD URL LIST</h3>
+                    <div class="admin-manager-dashboard-list-table">
+                        <div class="admin-manager-dashboard-list-table-tr" id="dasbboard_list_action_tr">
+                            <div class="admin-manager-dashboard-list-table-td">
+                                <label class="checkbox-container">
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                            <div class="admin-manager-dashboard-list-table-td">
+                                <!-- <span class="admin-manager-dashboard-list-btn" id="btn_dashboard_new">NEW</span> -->
+                                <span class="admin-manager-dashboard-list-btn" id="btn_dashboard_edit">EDIT</span>
+                                <span class="admin-manager-dashboard-list-btn" id="btn_dashboard_delete">DELETE</span>
+                            </div>
+                        </div>
+                        <div id="dashboard_list_table">
+                            <?php
+                            if(isset($dashboards)) {
+                                foreach($dashboards as $dashboard) {
+                                    ?>
+                                    <div class="admin-manager-dashboard-list-table-tr">
+                                        <div class="admin-manager-dashboard-list-table-td">
+                                            <label class="checkbox-container">
+                                                <input type="checkbox" class="dashboard-checkbox" data-id="<?php echo $dashboard['id']?>" name="dashboard_checkbox_<?php echo $dashboard['id']?>">
+                                                <span class="checkmark"></span>
+                                            </label>
+                                        </div>
+                                        <div class="admin-manager-dashboard-list-table-td">
+                                            <a class="admin-manager-dashboard-list-url" href="<?php echo base_url($dashboard['slug'])?>"><?php echo base_url($dashboard['slug'])?></a>
+                                        </div>
+                                    </div>
+                                    <?php
+                                }
+                            }
+                            ?>
+                        </div>                        
+                    </div>
+                </div>
+            </div>
+            <div class="admin-manager-form-col">
                 <div class="admin-manager-form-input-wrap" step="1">
                     <div class="admin-manager-form-input-wrap-left">
                         <div class="admin-manager-form-input-numb">01</div>
@@ -54,21 +95,15 @@
                     </div>
                     <div class="admin-manager-form-input-wrap-right">
                         <div class="admin-manager-form-input-wrap-right-left">
-                            <div class="admin-manager-form-input-plus-icon">+</div>
+                            <div class="admin-manager-form-input-plus-icon" id="btn_add_user">+</div>
                         </div>
                         <div class="admin-manager-form-input-wrap-right-right">
                             <div class="admin-manager-form-input-label">add users</div>
-                            <div class="admin-manager-form-input-controls">
-                                <input type="text" class="admin-manager-form-input-control" placeholder="Email" name="email1"></input>
-                                <input type="password" class="admin-manager-form-input-control" placeholder="Password" name="password1"></input>
-                            </div>
-                            <div class="admin-manager-form-input-controls">
-                                <input type="text" class="admin-manager-form-input-control" placeholder="Email" name="email2"></input>
-                                <input type="password" class="admin-manager-form-input-control" placeholder="Password" name="password2"></input>
-                            </div>
-                            <div class="admin-manager-form-input-controls">
-                                <input type="text" class="admin-manager-form-input-control" placeholder="Email" name="email3"></input>
-                                <input type="password" class="admin-manager-form-input-control" placeholder="Password" name="password3"></input>
+                            <div id="user_list">
+                                <div class="admin-manager-form-input-controls">
+                                    <input type="text" class="admin-manager-form-input-control" placeholder="Email" name="email"></input>
+                                    <input type="password" class="admin-manager-form-input-control" placeholder="Password" name="password"></input>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -131,9 +166,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="admin-manager-form-col">
-                <div class="admin-manager-form-input-wrap admin-manager-form-btn">
+                <div class="admin-manager-form-input-wrap">
                     <div class="admin-manager-form-input-wrap-left">
                         <div class="admin-manager-form-input-numb">07</div>
                     </div>
@@ -143,46 +176,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="admin-manager-dashboard-list">
-                    <h3 class="admin-manager-dashboard-list-title">DASHBORD LIST</h3>
-                    <div class="admin-manager-dashboard-list-table">
-                        <div class="admin-manager-dashboard-list-table-tr" id="dasbboard_list_action_tr">
-                            <div class="admin-manager-dashboard-list-table-td">
-                                <label class="checkbox-container">
-                                    <input type="checkbox">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </div>
-                            <div class="admin-manager-dashboard-list-table-td">
-                                <span class="admin-manager-dashboard-list-btn" id="btn_dashboard_new">NEW</span>
-                                <span class="admin-manager-dashboard-list-btn" id="btn_dashboard_edit">EDIT</span>
-                                <span class="admin-manager-dashboard-list-btn" id="btn_dashboard_delete">DELETE</span>
-                            </div>
-                        </div>
-                        <div id="dashboard_list_table">
-                            <?php
-                            if(isset($dashboards)) {
-                                foreach($dashboards as $dashboard) {
-                                    ?>
-                                    <div class="admin-manager-dashboard-list-table-tr">
-                                        <div class="admin-manager-dashboard-list-table-td">
-                                            <label class="checkbox-container">
-                                                <input type="checkbox" class="dashboard-checkbox" data-id="<?php echo $dashboard['id']?>" name="dashboard_checkbox_<?php echo $dashboard['id']?>">
-                                                <span class="checkmark"></span>
-                                            </label>
-                                        </div>
-                                        <div class="admin-manager-dashboard-list-table-td">
-                                            <span class="admin-manager-dashboard-list-url">URL = <?php echo base_url($dashboard['slug'])?></span>
-                                        </div>
-                                    </div>
-                                    <?php
-                                }
-                            }
-                            ?>
-                        </div>                        
-                    </div>
-                </div>
             </div>
+            
         </div>
     </div>
 

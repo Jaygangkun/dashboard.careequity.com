@@ -65,7 +65,6 @@ var reports_tmp = {};
 
     load_reports();
 
-
     $(document).on('click', '.trigger-click', function() {
         var type = $(this).attr('type');
 
@@ -148,10 +147,14 @@ var reports_tmp = {};
     function clearAdminManagerForm() {
         $('[name="dashboard_name"]').val('');
 
-        for(var index = 1; index <= user_count; index++) {
-            $('[name="email' + index + '"]').val('');
-            $('[name="password' + index + '"]').val('');
-        }
+        var html = `
+            <div class="admin-manager-form-input-controls">
+                <input type="text" class="admin-manager-form-input-control" placeholder="Email" name="email"></input>
+                <input type="password" class="admin-manager-form-input-control" placeholder="Password" name="password"></input>
+            </div>
+        `;
+
+        $('#user_list').html(html);
 
         $('.admin-manager-form-input-result').text("");
 
@@ -169,17 +172,19 @@ var reports_tmp = {};
             return;
         }
 
-        if($('[name="email1"]').val() == '') {
-            alert('Please Input Email');
-            $('[name="email1"]').focus();
-            return;
-        }
+        var users_wrap = $('#user_list .admin-manager-form-input-controls');
 
-        if($('[name="password1"]').val() == '') {
-            alert('Please Input User Password');
-            $('[name="password1"]').focus();
-            return;
-        }
+        // if($('[name="email1"]').val() == '') {
+        //     alert('Please Input Email');
+        //     $('[name="email1"]').focus();
+        //     return;
+        // }
+
+        // if($('[name="password1"]').val() == '') {
+        //     alert('Please Input User Password');
+        //     $('[name="password1"]').focus();
+        //     return;
+        // }
 
         var publish_data = {
             reports: reports,
@@ -187,11 +192,23 @@ var reports_tmp = {};
             users: []
         };
         
-        for(var index = 1; index <= user_count; index++) {
-            publish_data['users'].push({
-                email: $('[name="email' + index + '"]').val(),
-                password: $('[name="password' + index + '"]').val()
-            })
+        for(var index = 0; index < users_wrap.length; index++) {
+            // var user_wrap = $(users_wrap[index]);
+
+            var email = $(users_wrap[index]).find('[name="email"]').val();
+            var password = $(users_wrap[index]).find('[name="password"]').val();
+
+            if(email != '' && password != '') {
+                publish_data['users'].push({
+                    email: email,
+                    password: password
+                })
+            }
+        }
+
+        if(publish_data['users'].length == 0) {
+            alert('Please Input Email/Password');
+            return;
         }
 
         $('body').addClass('loading');
@@ -278,8 +295,17 @@ var reports_tmp = {};
                 }
 
                 if(resp.users) {
+                    $('#user_list').html('');
                     for(var index = 1; index <= resp.users.length; index++) {
-                        $('[name="email' + index + '"]').val(resp.users[index - 1].email);
+                        var html = `
+                            <div class="admin-manager-form-input-controls">
+                                <input type="text" class="admin-manager-form-input-control" placeholder="Email" name="email" value="` + resp.users[index - 1].email + `"></input>
+                                <input type="password" class="admin-manager-form-input-control" placeholder="Password" name="password"></input>
+                            </div>
+                        `;
+                        $('#user_list').append(html);
+                        
+                        // $('[name="email' + index + '"]').val(resp.users[index - 1].email);
                         // $('[name="password' + index + '"]').val(resp.users[index - 1].password);
                     }
                 }
@@ -318,5 +344,15 @@ var reports_tmp = {};
                 $('body').removeClass('loading');
             }
         })
+    })
+
+    $(document).on('click', '#btn_add_user', function() {
+        var html = `
+            <div class="admin-manager-form-input-controls">
+                <input type="text" class="admin-manager-form-input-control" placeholder="Email" name="email"></input>
+                <input type="password" class="admin-manager-form-input-control" placeholder="Password" name="password"></input>
+            </div>
+        `;
+        $('#user_list').append(html);
     })
 })(jQuery)
