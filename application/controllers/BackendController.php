@@ -146,7 +146,7 @@ class BackendController extends CI_Controller
                         </label>
                     </div>
                     <div class="admin-manager-dashboard-list-table-td">
-                        <span class="admin-manager-dashboard-list-url">URL = $dashboard_url</span>
+                        <a class="admin-manager-dashboard-list-url" href="$dashboard_url" target="blank">$dashboard_url</a>
                     </div>
                 </div>
             EOD
@@ -190,7 +190,7 @@ class BackendController extends CI_Controller
                         </label>
                     </div>
                     <div class="admin-manager-dashboard-list-table-td">
-                        <span class="admin-manager-dashboard-list-url">URL = $dashboard_url</span>
+                        <a class="admin-manager-dashboard-list-url" href="$dashboard_url" target="blank">$dashboard_url</a>
                     </div>
                 </div>
             EOD;
@@ -224,7 +224,7 @@ class BackendController extends CI_Controller
                         </label>
                     </div>
                     <div class="admin-manager-dashboard-list-table-td">
-                        <span class="admin-manager-dashboard-list-url">URL = $dashboard_url</span>
+                        <a class="admin-manager-dashboard-list-url" href="$dashboard_url" target="blank">$dashboard_url</a>
                     </div>
                 </div>
             EOD;

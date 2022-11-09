@@ -25,6 +25,11 @@ class PageController extends CI_Controller
 
     public function index()
     {
+        if(!isset($_SESSION['user']) || !isset($_SESSION['slug'])){
+            redirect('/login');
+            return;
+        }
+
         $data = array();
         $data['dashboards'] = $this->Dashboards->load();
 
@@ -39,7 +44,7 @@ class PageController extends CI_Controller
             return;
         }
 
-        if($_SESSION['slug'] != $slug) {
+        if($_SESSION['user']['role'] != 'admin' && $_SESSION['slug'] != $slug) {
             redirect('/login');
             return;
         }
@@ -159,7 +164,14 @@ class PageController extends CI_Controller
                         $dashboard = $this->Dashboards->getByID($users[0]['dashboard_id']);
                         $_SESSION['user'] = $users[0];
                         $_SESSION['slug'] = $dashboard[0]['slug'];
-                        redirect(base_url('/'.$dashboard[0]['slug']));
+
+                        if($users[0]['role'] == 'admin') {
+                            redirect(base_url('/'));
+                        }
+                        else {
+                            redirect(base_url('/'.$dashboard[0]['slug']));
+                        }
+                        
                     }
                 }
                 else {

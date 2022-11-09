@@ -30,11 +30,11 @@
 <body class="admin-manager-page">
     <div class="loading-screen"><div class="loader"></div></div>
     <div class="admin-manager-container">
-        <h1 class="">Admin Manager</h1>
+        <h1 class="page-title">Admin Manager</h1>
         <div class="admin-manager-form-container">
             <div class="admin-manager-form-col">
                 <div class="admin-manager-dashboard-list">
-                    <h3 class="admin-manager-dashboard-list-title">PUBLISHED DASHBORD URL LIST</h3>
+                    <h3 class="admin-manager-dashboard-list-title">PUBLISHED DASHBOARD URL LIST</h3>
                     <div class="admin-manager-dashboard-list-table">
                         <div class="admin-manager-dashboard-list-table-tr" id="dasbboard_list_action_tr">
                             <div class="admin-manager-dashboard-list-table-td">
@@ -62,7 +62,7 @@
                                             </label>
                                         </div>
                                         <div class="admin-manager-dashboard-list-table-td">
-                                            <a class="admin-manager-dashboard-list-url" href="<?php echo base_url($dashboard['slug'])?>"><?php echo base_url($dashboard['slug'])?></a>
+                                            <a class="admin-manager-dashboard-list-url" href="<?php echo base_url($dashboard['slug'])?>" target="blank"><?php echo base_url($dashboard['slug'])?></a>
                                         </div>
                                     </div>
                                     <?php
@@ -80,7 +80,7 @@
                     </div>
                     <div class="admin-manager-form-input-wrap-right">
                         <div class="admin-manager-form-input-wrap-right-left">
-                            <div class="admin-manager-form-input-plus-icon">+</div>
+                            
                         </div>
                         <div class="admin-manager-form-input-wrap-right-right">
                             <div class="admin-manager-form-input-label">create a dashboard</div>
@@ -102,7 +102,7 @@
                             <div id="user_list">
                                 <div class="admin-manager-form-input-controls">
                                     <input type="text" class="admin-manager-form-input-control" placeholder="Email" name="email"></input>
-                                    <input type="password" class="admin-manager-form-input-control" placeholder="Password" name="password"></input>
+                                    <input type="text" class="admin-manager-form-input-control" placeholder="Password" name="password"></input>
                                 </div>
                             </div>
                         </div>

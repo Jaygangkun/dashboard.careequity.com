@@ -63,7 +63,7 @@ var reports_tmp = {};
 
     }
 
-    load_reports();
+    // load_reports();
 
     $(document).on('click', '.trigger-click', function() {
         var type = $(this).attr('type');
@@ -150,7 +150,7 @@ var reports_tmp = {};
         var html = `
             <div class="admin-manager-form-input-controls">
                 <input type="text" class="admin-manager-form-input-control" placeholder="Email" name="email"></input>
-                <input type="password" class="admin-manager-form-input-control" placeholder="Password" name="password"></input>
+                <input type="text" class="admin-manager-form-input-control" placeholder="Password" name="password"></input>
             </div>
         `;
 
@@ -300,7 +300,7 @@ var reports_tmp = {};
                         var html = `
                             <div class="admin-manager-form-input-controls">
                                 <input type="text" class="admin-manager-form-input-control" placeholder="Email" name="email" value="` + resp.users[index - 1].email + `"></input>
-                                <input type="password" class="admin-manager-form-input-control" placeholder="Password" name="password"></input>
+                                <input type="text" class="admin-manager-form-input-control" placeholder="Password" name="password"></input>
                             </div>
                         `;
                         $('#user_list').append(html);
@@ -350,7 +350,7 @@ var reports_tmp = {};
         var html = `
             <div class="admin-manager-form-input-controls">
                 <input type="text" class="admin-manager-form-input-control" placeholder="Email" name="email"></input>
-                <input type="password" class="admin-manager-form-input-control" placeholder="Password" name="password"></input>
+                <input type="text" class="admin-manager-form-input-control" placeholder="Password" name="password"></input>
             </div>
         `;
         $('#user_list').append(html);
