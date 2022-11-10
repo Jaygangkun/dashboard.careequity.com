@@ -99,6 +99,10 @@
     display: flex;
 }
 
+#btn-publish-container-wrap .admin-manager-form-input-wrap-right {
+    align-items: center;
+}
+
 .admin-manager-form-input-wrap-right.trigger-click {
     cursor: pointer;
 }
@@ -117,6 +121,10 @@
     text-align: center;
     line-height: 30px;
     font-size: 22px;
+}
+
+.admin-manager-form-input-plus-icon:hover {
+    background: #0046C3;
 }
 
 .admin-manager-form-input-label {
@@ -146,7 +154,7 @@ select.admin-manager-form-input-control {
 
 .admin-manager-form-input-desc {
     color: #BDBDBD;
-    font-size: 18px;
+    font-size: 12px;
     margin-top: 10px;
     word-break: break-word;
 }

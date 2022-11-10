@@ -63,7 +63,7 @@ var reports_tmp = {};
 
     }
 
-    // load_reports();
+    load_reports();
 
     $(document).on('click', '.trigger-click', function() {
         var type = $(this).attr('type');
@@ -354,5 +354,9 @@ var reports_tmp = {};
             </div>
         `;
         $('#user_list').append(html);
+    })
+
+    $(document).on('keyup', '[name="dashboard_name"]', function() {
+        $('#create_dashboard_url').html(base_url + $(this).val());
     })
 })(jQuery)

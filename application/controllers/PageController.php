@@ -30,6 +30,11 @@ class PageController extends CI_Controller
             return;
         }
 
+        if($_SESSION['user']['role'] != 'admin') {
+            redirect(base_url('/'.$_SESSION['slug']));
+            return;
+        }
+
         $data = array();
         $data['dashboards'] = $this->Dashboards->load();
 
@@ -161,9 +166,16 @@ class PageController extends CI_Controller
                 if($this->oktaapi->verify_email_otp($okta_user_id, $okta_factor_id, $code)) {
                     $users = $this->Users->searchUser($email, $password);
                     if(count($users)){
-                        $dashboard = $this->Dashboards->getByID($users[0]['dashboard_id']);
+                        if($users[0]['role'] == 'admin') {
+                            $slug = '';
+                        }
+                        else {
+                            $dashboard = $this->Dashboards->getByID($users[0]['dashboard_id']);
+                            $slug = $dashboard[0]['slug'];
+                        }
+                        
                         $_SESSION['user'] = $users[0];
-                        $_SESSION['slug'] = $dashboard[0]['slug'];
+                        $_SESSION['slug'] = $slug;
 
                         if($users[0]['role'] == 'admin') {
                             redirect(base_url('/'));

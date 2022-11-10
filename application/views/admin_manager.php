@@ -30,7 +30,7 @@
 <body class="admin-manager-page">
     <div class="loading-screen"><div class="loader"></div></div>
     <div class="admin-manager-container">
-        <h1 class="page-title">Admin Manager</h1>
+        <h1 class="page-title">Admin Dashboard Manager</h1>
         <div class="admin-manager-form-container">
             <div class="admin-manager-form-col">
                 <div class="admin-manager-dashboard-list">
@@ -85,7 +85,7 @@
                         <div class="admin-manager-form-input-wrap-right-right">
                             <div class="admin-manager-form-input-label">create a dashboard</div>
                             <input type="text" class="admin-manager-form-input-control" placeholder="Name" name="dashboard_name"></input>
-                            <div class="admin-manager-form-input-desc">URL = dashboard.careequity.com/dashboard</div>
+                            <div class="admin-manager-form-input-desc">URL = <span id="create_dashboard_url"><?php echo base_url('/')?></span></div>
                         </div>
                     </div>
                 </div>
@@ -166,7 +166,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="admin-manager-form-input-wrap">
+                <div class="admin-manager-form-input-wrap" id="btn-publish-container-wrap">
                     <div class="admin-manager-form-input-wrap-left">
                         <div class="admin-manager-form-input-numb">07</div>
                     </div>
