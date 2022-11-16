@@ -236,6 +236,11 @@ var reports_tmp = {};
                 data: publish_data,
                 dataType: 'json',
                 success: function(resp) {
+                    if(!resp.success) {
+                        $('body').removeClass('loading');
+                        alert(resp.message);
+                        return;
+                    }
                     alert('Published Successfully!');
                     $('#dashboard_list_table').append(resp.dashboard_tr);
     
@@ -357,6 +362,8 @@ var reports_tmp = {};
     })
 
     $(document).on('keyup', '[name="dashboard_name"]', function() {
-        $('#create_dashboard_url').html(base_url + $(this).val());
+        var name = $(this).val();
+        var slug = name.toLowerCase().trim().replace(/[^\w\s-]/g, '').replace(/[\s_-]+/g, '-').replace(/^-+|-+$/g, '');
+        $('#create_dashboard_url').html(base_url + slug);
     })
 })(jQuery)

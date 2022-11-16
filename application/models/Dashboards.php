@@ -50,5 +50,13 @@ class Dashboards extends CI_Model
 
 		return $query_result;
 	}
+
+	public function getByName($name)
+	{
+		$query = "SELECT * FROM dashboards WHERE name='" . $name . "'";
+		$query_result = $this->db->query($query)->result_array();
+
+		return $query_result;
+	}
 	
 }

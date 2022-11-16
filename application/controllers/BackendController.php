@@ -116,6 +116,16 @@ class BackendController extends CI_Controller
 
     public function dashboard_publish()
     {
+        $dashboard_exists = $this->Dashboards->getByName(isset($_POST['dashboard_name']) ? $_POST['dashboard_name'] : '');
+
+        if(count($dashboard_exists) > 0) {
+            echo json_encode(array(
+                'success' => false,
+                'message' => 'Already dashboard exist'
+            ));
+            die();
+        }
+
         $dashboard_id = $this->Dashboards->add(array(
             'name' => isset($_POST['dashboard_name']) ? $_POST['dashboard_name'] : '',
             'reports' => isset($_POST['reports']) ? $_POST['reports'] : '',
