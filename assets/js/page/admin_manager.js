@@ -30,6 +30,42 @@ var reports_tmp = {};
                     // ajax: base_url + "/backend/linkedin/profiles"
                 });
 
+                // linkedin_list.on('page.dt', function() {
+                //     var linkedin_checkboxs = $('#modal_select #linkedin_list tbody [type="checkbox"]');
+                //     for(var index = 0; index < linkedin_checkboxs.length; index ++) {
+                //         var linkedin_checkbox_data_id = $(linkedin_checkboxs[index]).attr('data-id');
+                        
+                //         $(linkedin_checkboxs[index]).prop('checked', true);
+                        
+                //     }
+                // })
+
+                linkedin_list.on('draw', function() {
+                    console.log("draw");
+                    var linkedin_checkboxs = $('#modal_select #linkedin_list tbody [type="checkbox"]');
+                    for(var index = 0; index < linkedin_checkboxs.length; index ++) {
+                        var linkedin_checkbox_data_id = $(linkedin_checkboxs[index]).attr('data-id');
+                        
+                        if(reports_tmp.hasOwnProperty('linkedin')) {
+                            if(reports_tmp["linkedin"].hasOwnProperty(linkedin_checkbox_data_id)) {
+                                if(reports_tmp["linkedin"][linkedin_checkbox_data_id]) {
+                                    $(linkedin_checkboxs[index]).prop('checked', true);
+                                }
+                                else {
+                                    $(linkedin_checkboxs[index]).prop('checked', false);
+                                }
+                            }
+                            else {
+                                $(linkedin_checkboxs[index]).prop('checked', false);
+                            }
+                        }
+                        else {
+                            $(linkedin_checkboxs[index]).prop('checked', false);
+                        }
+                       
+                    }
+                })
+
                 biorxiv_list = $('#biorxiv_list').DataTable({
                     responsive: true,
                     "columnDefs": [
@@ -99,13 +135,37 @@ var reports_tmp = {};
         if(!reports_tmp.hasOwnProperty(data_type)) {
             reports_tmp[data_type] = {};
         }
+        console.log(linkedin_list.rows().data());
 
-        if($(this).is(':checked')) {
-            reports_tmp[data_type][data_id] = $(this).is(':checked');
+        if(data_type == "linkedin" && data_id == "all") {
+
+            var linkedin_list_data = linkedin_list.rows().data();
+            for(var index = 0; index < linkedin_list_data.length; index ++) {
+                var checkbox_dom = $($.parseHTML(linkedin_list_data[index][0])).find('[type="checkbox"]');
+                linkedin_checkbox_data_id = $(checkbox_dom).attr('data-id');
+
+                if($(this).is(':checked')) {
+                    // $(linkedin_checkboxs[index]).prop('checked', true);
+                    reports_tmp[data_type][linkedin_checkbox_data_id] = $(this).is(':checked');
+                }
+                else {
+                    // $(linkedin_checkboxs[index]).prop('checked', false);
+                    delete reports_tmp[data_type][linkedin_checkbox_data_id];
+                }
+
+            }
+
+            linkedin_list.draw(false);
         }
-        else if(reports_tmp[data_type].hasOwnProperty(data_id)){
-            delete reports_tmp[data_type][data_id];
+        else {
+            if($(this).is(':checked')) {
+                reports_tmp[data_type][data_id] = $(this).is(':checked');
+            }
+            else if(reports_tmp[data_type].hasOwnProperty(data_id)){
+                delete reports_tmp[data_type][data_id];
+            }
         }
+        
         
     })
 

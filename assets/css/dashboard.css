@@ -435,6 +435,15 @@ select.admin-manager-form-input-control {
     color: #000000;
 }
 
+#modal_select .table>tbody>tr>td, 
+#modal_select .table>tbody>tr>th, 
+#modal_select .table>tfoot>tr>td, 
+#modal_select .table>tfoot>tr>th, 
+#modal_select .table>thead>tr>td, 
+#modal_select .table>thead>tr>th {
+    padding: 10px;
+}
+
 @media screen and (max-width: 1170px) {
     .admin-manager-form-container {
         justify-content: flex-end;

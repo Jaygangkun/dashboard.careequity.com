@@ -197,7 +197,12 @@
                         <table id="linkedin_list" class="table table-bordered table-striped table-hover dataTable">
                             <thead>
                                 <tr>
-                                    <td></td>
+                                    <td>
+                                        <label class="checkbox-container">
+                                            <input type="checkbox" class="checkbox-linkedin" data-type="linkedin" data-id="all" id="linkedin_checkbox_all">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </td>
                                     <td>Name</td>
                                 </tr>
                             </thead>
