@@ -21,6 +21,7 @@ class PageController extends CI_Controller
 
         $this->load->library('OktaApi');
 
+        checkLogin();
     }
 
     public function index()

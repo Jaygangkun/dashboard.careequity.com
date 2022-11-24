@@ -86,3 +86,49 @@ if (!function_exists('slugify')) {
         return $text;
     }
 }
+
+if (!function_exists('checkLogin')) {
+	function checkLogin()
+	{
+        
+		unset($_SESSION['user']);
+        unset($_SESSION['slug']);
+
+		$curl = curl_init();
+
+		curl_setopt_array($curl, array(
+			CURLOPT_URL => 'https://tools.careequity.com/check-login',
+            // CURLOPT_URL => 'http://172.16.1.45:9011/check-login',
+			CURLOPT_RETURNTRANSFER => true,
+			CURLOPT_ENCODING => '',
+			CURLOPT_MAXREDIRS => 10,
+			CURLOPT_TIMEOUT => 0,
+			CURLOPT_FOLLOWLOCATION => true,
+			CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+			CURLOPT_CUSTOMREQUEST => 'POST',
+			CURLOPT_POSTFIELDS => array('browser' => $_SERVER['HTTP_USER_AGENT'],'ip' => $_SERVER['REMOTE_ADDR']),
+			CURLOPT_HTTPHEADER => array(
+				'Cookie: ci_session=246a246c5808e567b059fb14d851c4a2a2668cfa'
+			),
+		));
+
+		$response = curl_exec($curl);
+
+		curl_close($curl);
+		
+		$resp_data = json_decode($response, true);
+
+		if(isset($resp_data['login']) && $resp_data['login']) {
+
+			if(isset($resp_data['data']) && isset($resp_data['data']['user_data'])) {
+				$_SESSION['user'] = array(
+                    'role' => 'admin'
+                );
+
+                $_SESSION['slug'] = '';
+			}
+		}
+
+		return;
+	}
+}
