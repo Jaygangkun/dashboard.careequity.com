@@ -345,18 +345,20 @@ var reports_tmp = {};
 
                     $('.admin-manager-form-input-result').text("");
 
-                    var resp_reports = JSON.parse(resp.dashboard.reports);
-                    reports = JSON.parse(JSON.stringify(resp_reports));
-                    Object.keys(resp_reports).map(report_type => {
-
-                        Object.keys(resp_reports[report_type]).map(data_id => {
-                            $('#' + report_type + '_checkbox_' + data_id).prop('checked', resp_reports[report_type][data_id]);
-                        })
-
-                        if(Object.keys(resp_reports[report_type]).length > 0) {
-                            $('.admin-manager-form-input-result[data-type="' + report_type + '"]').text(Object.keys(resp_reports[report_type]).length + " selected");
-                        }  
-                    });
+                    if(resp.dashboard.reports != null) {
+                        var resp_reports = JSON.parse(resp.dashboard.reports);
+                        reports = JSON.parse(JSON.stringify(resp_reports));
+                        Object.keys(resp_reports).map(report_type => {
+    
+                            Object.keys(resp_reports[report_type]).map(data_id => {
+                                $('#' + report_type + '_checkbox_' + data_id).prop('checked', resp_reports[report_type][data_id]);
+                            })
+    
+                            if(Object.keys(resp_reports[report_type]).length > 0) {
+                                $('.admin-manager-form-input-result[data-type="' + report_type + '"]').text(Object.keys(resp_reports[report_type]).length + " selected");
+                            }  
+                        });
+                    }
                 }
 
                 if(resp.users) {
