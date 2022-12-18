@@ -17,7 +17,6 @@
     })
 
     function loadUpdates() {
-
         if(typeof linkedin_reports_ids != 'undefined') {
             $.ajax({
                 url: base_url + '/PublicApi/GetGroupProfileUpdates.ashx',
@@ -42,6 +41,10 @@
                     }
                 }
             })
+        }
+        else {
+            $('#report_count_linkedin').text('No Accounts');
+            $('#report_count_linkedin').addClass('disable');
         }
 
         if(typeof biorxiv_reports_ids != 'undefined') {
@@ -71,6 +74,10 @@
                 }
             })
         }
+        else {
+            $('#report_count_biorxiv').text('No Reports');
+            $('#report_count_biorxiv').addClass('disable');
+        }
 
         if(typeof pubmed_reports_ids != 'undefined') {
             $.ajax({
@@ -99,6 +106,10 @@
                 }
             })
         }
+        else {
+            $('#report_count_pubmed').text('No Reports');
+            $('#report_count_pubmed').addClass('disable');
+        }
 
         if(typeof clinical_reports_ids != 'undefined') {
             $.ajax({
@@ -126,6 +137,10 @@
                     }
                 }
             })
+        }
+        else {
+            $('#report_count_clinical').text('No Reports');
+            $('#report_count_clinical').addClass('disable');
         }
 
     }
