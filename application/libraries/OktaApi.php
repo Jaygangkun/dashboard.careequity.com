@@ -3,9 +3,9 @@
 class OktaApi 
 {
 
-    private $api_token = '00YSMQXMViWA4OupMZ5qJGTudijXucNMXCAD_LA7Co';
+    private $api_token = '00VWWHru9sdNiwxSY1-r-xrUltzsi9WYiFI_BF7eGE';
     
-    private $url = 'https://trial-2004462.okta.com';
+    private $url = 'https://careequity-admin.okta.com';
 
 	function __construct()
 	{

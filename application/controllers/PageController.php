@@ -87,26 +87,7 @@ class PageController extends CI_Controller
 
 				$users = $this->Users->searchUser($this->input->post('email'), $this->input->post('password'));
 				if(count($users)){
-                    				
-                    if($users[0]['role'] == 'admin') {
-                        $slug = '';
-                    }
-                    else {
-                        $dashboard = $this->Dashboards->getByID($users[0]['dashboard_id']);
-                        $slug = $dashboard[0]['slug'];
-                    }
                     
-                    $_SESSION['user'] = $users[0];
-                    $_SESSION['slug'] = $slug;
-
-                    if($users[0]['role'] == 'admin') {
-                        redirect(base_url('/'));
-                    }
-                    else {
-                        redirect(base_url('/'.$dashboard[0]['slug']));
-                    }
-
-                    return;
                     $dashboard = $this->Dashboards->getByID($users[0]['dashboard_id']);
 
                     // if(!$dashboard) {
